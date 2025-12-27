@@ -1,0 +1,1115 @@
+[
+  {
+    "MACHINE_ID": "ARC001",
+    "MACHINE_DESC": "MC380-A",
+    "MACHINE_TYPE": "ARC",
+    "DEPT_CODE": "AR",
+    "MACHINE_DEV": "ARC"
+  },
+  {
+    "MACHINE_ID": "ARC002",
+    "MACHINE_DESC": "MC380-B",
+    "MACHINE_TYPE": "ARC",
+    "DEPT_CODE": "AR",
+    "MACHINE_DEV": "ARC"
+  },
+  {
+    "MACHINE_ID": "ARC003",
+    "MACHINE_DESC": "MC380-C",
+    "MACHINE_TYPE": "ARC",
+    "DEPT_CODE": "AR",
+    "MACHINE_DEV": "ARC"
+  },
+  {
+    "MACHINE_ID": "ARC004",
+    "MACHINE_DESC": "DLX-1200-D",
+    "MACHINE_TYPE": "ARC",
+    "DEPT_CODE": "AR",
+    "MACHINE_DEV": "ARC"
+  },
+  {
+    "MACHINE_ID": "ARD001",
+    "MACHINE_DESC": "AR Dip Coat 1",
+    "MACHINE_TYPE": "ARD",
+    "DEPT_CODE": "AR",
+    "MACHINE_DEV": "ARD"
+  },
+  {
+    "MACHINE_ID": "ARD002",
+    "MACHINE_DESC": "AR Dip Coat 2",
+    "MACHINE_TYPE": "ARD",
+    "DEPT_CODE": "AR",
+    "MACHINE_DEV": "ARD"
+  },
+  {
+    "MACHINE_ID": "ARO001",
+    "MACHINE_DESC": "Standing Oven #1",
+    "MACHINE_TYPE": "ARO",
+    "DEPT_CODE": "AR",
+    "MACHINE_DEV": "ARO"
+  },
+  {
+    "MACHINE_ID": "ARO002",
+    "MACHINE_DESC": "Standing Oven #2",
+    "MACHINE_TYPE": "ARO",
+    "DEPT_CODE": "AR",
+    "MACHINE_DEV": "ARO"
+  },
+  {
+    "MACHINE_ID": "ARO003",
+    "MACHINE_DESC": "Standing Oven #3",
+    "MACHINE_TYPE": "ARO",
+    "DEPT_CODE": "AR",
+    "MACHINE_DEV": "ARO"
+  },
+  {
+    "MACHINE_ID": "ARO004",
+    "MACHINE_DESC": "Standing Oven #4",
+    "MACHINE_TYPE": "ARO",
+    "DEPT_CODE": "AR",
+    "MACHINE_DEV": "ARO"
+  },
+  {
+    "MACHINE_ID": "ARO005",
+    "MACHINE_DESC": "Standing Oven #5",
+    "MACHINE_TYPE": "ARO",
+    "DEPT_CODE": "AR",
+    "MACHINE_DEV": "ARO"
+  },
+  {
+    "MACHINE_ID": "ARO006",
+    "MACHINE_DESC": "Standing Oven #6",
+    "MACHINE_TYPE": "ARO",
+    "DEPT_CODE": "AR",
+    "MACHINE_DEV": "ARO"
+  },
+  {
+    "MACHINE_ID": "ARO007",
+    "MACHINE_DESC": "Standing Oven #7",
+    "MACHINE_TYPE": "ARO",
+    "DEPT_CODE": "AR",
+    "MACHINE_DEV": "ARO"
+  },
+  {
+    "MACHINE_ID": "ARO008",
+    "MACHINE_DESC": "Conveyor Oven",
+    "MACHINE_TYPE": "ARO",
+    "DEPT_CODE": "AR",
+    "MACHINE_DEV": "ARO"
+  },
+  {
+    "MACHINE_ID": "ARP001",
+    "MACHINE_DESC": "Degas Oven 1",
+    "MACHINE_TYPE": "ARP",
+    "DEPT_CODE": "AR",
+    "MACHINE_DEV": "ARP"
+  },
+  {
+    "MACHINE_ID": "ARP002",
+    "MACHINE_DESC": "Degas Oven 2",
+    "MACHINE_TYPE": "ARP",
+    "DEPT_CODE": "AR",
+    "MACHINE_DEV": "ARP"
+  },
+  {
+    "MACHINE_ID": "ARU001",
+    "MACHINE_DESC": "AR Ultrasonic Cleaner",
+    "MACHINE_TYPE": "ARU",
+    "DEPT_CODE": "AR",
+    "MACHINE_DEV": "ARU"
+  },
+  {
+    "MACHINE_ID": "BRK001",
+    "MACHINE_DESC": "Breakage #1-HAW",
+    "MACHINE_TYPE": "BRK",
+    "DEPT_CODE": null,
+    "MACHINE_DEV": "BRK"
+  },
+  {
+    "MACHINE_ID": "BRK002",
+    "MACHINE_DESC": "Breakage #2-HAW",
+    "MACHINE_TYPE": "BRK",
+    "DEPT_CODE": null,
+    "MACHINE_DEV": "BRK"
+  },
+  {
+    "MACHINE_ID": "BRK003",
+    "MACHINE_DESC": "Breakage #3-HAW",
+    "MACHINE_TYPE": "BRK",
+    "DEPT_CODE": null,
+    "MACHINE_DEV": "BRK"
+  },
+  {
+    "MACHINE_ID": "BRK004",
+    "MACHINE_DESC": "Breakage #4-HAW",
+    "MACHINE_TYPE": "BRK",
+    "DEPT_CODE": null,
+    "MACHINE_DEV": "BRK"
+  },
+  {
+    "MACHINE_ID": "BRK005",
+    "MACHINE_DESC": "Breakage #5-HAW",
+    "MACHINE_TYPE": "BRK",
+    "DEPT_CODE": null,
+    "MACHINE_DEV": "BRK"
+  },
+  {
+    "MACHINE_ID": "BRK015",
+    "MACHINE_DESC": "Breakage #6-HAW",
+    "MACHINE_TYPE": "BRK",
+    "DEPT_CODE": null,
+    "MACHINE_DEV": "BRK"
+  },
+  {
+    "MACHINE_ID": "BRK016",
+    "MACHINE_DESC": "Breakage #7-HAW",
+    "MACHINE_TYPE": "BRK",
+    "DEPT_CODE": null,
+    "MACHINE_DEV": "BRK"
+  },
+  {
+    "MACHINE_ID": "CSW004",
+    "MACHINE_DESC": "Conveyor Switch 1 Hawthorne",
+    "MACHINE_TYPE": "CSW001",
+    "DEPT_CODE": "SUR",
+    "MACHINE_DEV": "CSW"
+  },
+  {
+    "MACHINE_ID": "CTR011",
+    "MACHINE_DESC": "Velocity 01 Hawthorne",
+    "MACHINE_TYPE": "COATER",
+    "DEPT_CODE": "SUR",
+    "MACHINE_DEV": "CTR"
+  },
+  {
+    "MACHINE_ID": "CTR014",
+    "MACHINE_DESC": "Velocity 02 Hawthorne",
+    "MACHINE_TYPE": "COATER",
+    "DEPT_CODE": "SUR",
+    "MACHINE_DEV": "CTR"
+  },
+  {
+    "MACHINE_ID": "EDG001",
+    "MACHINE_DESC": "ES-4 #1",
+    "MACHINE_TYPE": "EDGERL",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "EDG"
+  },
+  {
+    "MACHINE_ID": "EDG002",
+    "MACHINE_DESC": "ES-4 #2",
+    "MACHINE_TYPE": "EDGERL",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "EDG"
+  },
+  {
+    "MACHINE_ID": "EDG003",
+    "MACHINE_DESC": "Optronics 7E",
+    "MACHINE_TYPE": "EDGERO",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "EDG"
+  },
+  {
+    "MACHINE_ID": "EDG005",
+    "MACHINE_DESC": "Nidek LE-9000",
+    "MACHINE_TYPE": "EDGERN",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "EDG"
+  },
+  {
+    "MACHINE_ID": "EDG006",
+    "MACHINE_DESC": "Nidek ME-1000",
+    "MACHINE_TYPE": "EDGERN",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "EDG"
+  },
+  {
+    "MACHINE_ID": "EDG013",
+    "MACHINE_DESC": "Logical Device for Drill",
+    "MACHINE_TYPE": "EDGEREL",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "EDG"
+  },
+  {
+    "MACHINE_ID": "EDG017",
+    "MACHINE_DESC": "MEI EZFit-1",
+    "MACHINE_TYPE": "EDGERN384",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "EDG"
+  },
+  {
+    "MACHINE_ID": "EDG018",
+    "MACHINE_DESC": "MEI EZFit-2",
+    "MACHINE_TYPE": "EDGERN384",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "EDG"
+  },
+  {
+    "MACHINE_ID": "EDG019",
+    "MACHINE_DESC": "MEI EZFit-3",
+    "MACHINE_TYPE": "EDGERN384",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "EDG"
+  },
+  {
+    "MACHINE_ID": "EDG022",
+    "MACHINE_DESC": "MEI Racer #1 HAW",
+    "MACHINE_TYPE": "EDGERN384",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "EDG"
+  },
+  {
+    "MACHINE_ID": "EDG023",
+    "MACHINE_DESC": "MEI Racer EZ Line",
+    "MACHINE_TYPE": "EDGERN384",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "EDG"
+  },
+  {
+    "MACHINE_ID": "EDG024",
+    "MACHINE_DESC": "MEI Test Edger",
+    "MACHINE_TYPE": "EDGERN384",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "EDG"
+  },
+  {
+    "MACHINE_ID": "EDG025",
+    "MACHINE_DESC": "MEI Racer #2 HAW",
+    "MACHINE_TYPE": "EDGERN",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "EDG"
+  },
+  {
+    "MACHINE_ID": "EDG052",
+    "MACHINE_DESC": "MEI EZFit-4",
+    "MACHINE_TYPE": "EDGERN384",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "EDG"
+  },
+  {
+    "MACHINE_ID": "EDG059",
+    "MACHINE_DESC": "MEI Racer #3 HAW",
+    "MACHINE_TYPE": "EDGERN384",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "EDG"
+  },
+  {
+    "MACHINE_ID": "EDG060",
+    "MACHINE_DESC": "MEI Bisphera Phoenix HAW",
+    "MACHINE_TYPE": "EDGERN384",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "EDG"
+  },
+  {
+    "MACHINE_ID": "ENG002",
+    "MACHINE_DESC": "Engraver 1-1 #292",
+    "MACHINE_TYPE": "ENGRAVER",
+    "DEPT_CODE": "SUR",
+    "MACHINE_DEV": "ENG"
+  },
+  {
+    "MACHINE_ID": "ENG003",
+    "MACHINE_DESC": "Engraver 2-2 #147",
+    "MACHINE_TYPE": "ENGRAVER",
+    "DEPT_CODE": "SUR",
+    "MACHINE_DEV": "ENG"
+  },
+  {
+    "MACHINE_ID": "ENG004",
+    "MACHINE_DESC": "Engraver 2-3 #674",
+    "MACHINE_TYPE": "ENGRAVER",
+    "DEPT_CODE": "SUR",
+    "MACHINE_DEV": "ENG"
+  },
+  {
+    "MACHINE_ID": "ENG005",
+    "MACHINE_DESC": "Optotech Engraver #1 Haw",
+    "MACHINE_TYPE": "ENGRAVER",
+    "DEPT_CODE": "SUR",
+    "MACHINE_DEV": "ENG"
+  },
+  {
+    "MACHINE_ID": "ENG015",
+    "MACHINE_DESC": "Optotech Engraver #2 Haw",
+    "MACHINE_TYPE": "ENGRAVER",
+    "DEPT_CODE": "SUR",
+    "MACHINE_DEV": "ENG"
+  },
+  {
+    "MACHINE_ID": "FBK001",
+    "MACHINE_DESC": "Drill ICE 900",
+    "MACHINE_TYPE": "EDGERN",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "FBK"
+  },
+  {
+    "MACHINE_ID": "FBK002",
+    "MACHINE_DESC": "ICE-1000",
+    "MACHINE_TYPE": "EDGERN",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "FBK"
+  },
+  {
+    "MACHINE_ID": "FBK003",
+    "MACHINE_DESC": "ICE-1200 Specialty",
+    "MACHINE_TYPE": "EDGERN",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "FBK"
+  },
+  {
+    "MACHINE_ID": "FBK004",
+    "MACHINE_DESC": "ICE-1200 Bulk",
+    "MACHINE_TYPE": "EDGERN",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "FBK"
+  },
+  {
+    "MACHINE_ID": "FBK005",
+    "MACHINE_DESC": "ICE-900",
+    "MACHINE_TYPE": "EDGERN",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "FBK"
+  },
+  {
+    "MACHINE_ID": "FBK006",
+    "MACHINE_DESC": "Finishing ICE 900",
+    "MACHINE_TYPE": "EDGERN",
+    "DEPT_CODE": null,
+    "MACHINE_DEV": "FBK"
+  },
+  {
+    "MACHINE_ID": "FBK007",
+    "MACHINE_DESC": "ICE-1000",
+    "MACHINE_TYPE": "EDGERN",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "FBK"
+  },
+  {
+    "MACHINE_ID": "GEN001",
+    "MACHINE_DESC": "VFT Orbit 1 - Haw",
+    "MACHINE_TYPE": "VFT",
+    "DEPT_CODE": "SUR",
+    "MACHINE_DEV": "GEN"
+  },
+  {
+    "MACHINE_ID": "GEN002",
+    "MACHINE_DESC": "VFT Orbit 2 - Haw",
+    "MACHINE_TYPE": "VFT",
+    "DEPT_CODE": "SUR",
+    "MACHINE_DEV": "GEN"
+  },
+  {
+    "MACHINE_ID": "GEN003",
+    "MACHINE_DESC": "VFT Orbit 3 - Haw",
+    "MACHINE_TYPE": "VFT",
+    "DEPT_CODE": "SUR",
+    "MACHINE_DEV": "GEN"
+  },
+  {
+    "MACHINE_ID": "GEN004",
+    "MACHINE_DESC": "VFT Orbit 6 - Haw",
+    "MACHINE_TYPE": "VFT",
+    "DEPT_CODE": "SUR",
+    "MACHINE_DEV": "GEN"
+  },
+  {
+    "MACHINE_ID": "GEN005",
+    "MACHINE_DESC": "VFT Orbit 7 - Haw",
+    "MACHINE_TYPE": "VFT",
+    "DEPT_CODE": "SUR",
+    "MACHINE_DEV": "GEN"
+  },
+  {
+    "MACHINE_ID": "GEN006",
+    "MACHINE_DESC": "VFT Orbit 8 - Haw",
+    "MACHINE_TYPE": "VFT",
+    "DEPT_CODE": "SUR",
+    "MACHINE_DEV": "GEN"
+  },
+  {
+    "MACHINE_ID": "GEN007",
+    "MACHINE_DESC": "Lens Mapper",
+    "MACHINE_TYPE": "VFT",
+    "DEPT_CODE": null,
+    "MACHINE_DEV": "GEN"
+  },
+  {
+    "MACHINE_ID": "GEN008",
+    "MACHINE_DESC": "Auto Lens Mapper",
+    "MACHINE_TYPE": "VFT",
+    "DEPT_CODE": "QC",
+    "MACHINE_DEV": "GEN"
+  },
+  {
+    "MACHINE_ID": "GEN010",
+    "MACHINE_DESC": "Auto Lens Mapper",
+    "MACHINE_TYPE": "VFT",
+    "DEPT_CODE": "QC",
+    "MACHINE_DEV": "GEN"
+  },
+  {
+    "MACHINE_ID": "GEN034",
+    "MACHINE_DESC": "VFT Orbit 4 - Haw",
+    "MACHINE_TYPE": "VFT",
+    "DEPT_CODE": "SUR",
+    "MACHINE_DEV": "GEN"
+  },
+  {
+    "MACHINE_ID": "GEN035",
+    "MACHINE_DESC": "VFT Orbit 5 - Haw",
+    "MACHINE_TYPE": "VFT",
+    "DEPT_CODE": "SUR",
+    "MACHINE_DEV": "GEN"
+  },
+  {
+    "MACHINE_ID": "GEN036",
+    "MACHINE_DESC": "Auto Lens Mapper 2",
+    "MACHINE_TYPE": "VFT",
+    "DEPT_CODE": "QC",
+    "MACHINE_DEV": "GEN"
+  },
+  {
+    "MACHINE_ID": "GEN037",
+    "MACHINE_DESC": "VFT Orbit 9 - Haw",
+    "MACHINE_TYPE": "VFT",
+    "DEPT_CODE": "SUR",
+    "MACHINE_DEV": "GEN"
+  },
+  {
+    "MACHINE_ID": "LMD001",
+    "MACHINE_DESC": "QC Sync",
+    "MACHINE_TYPE": "LMD",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "LMD"
+  },
+  {
+    "MACHINE_ID": "LMD003",
+    "MACHINE_DESC": "Auto Lens Mapper 2",
+    "MACHINE_TYPE": "LMD",
+    "DEPT_CODE": "QC",
+    "MACHINE_DEV": "LMD"
+  },
+  {
+    "MACHINE_ID": "PCK001",
+    "MACHINE_DESC": "Picking #1-HAW",
+    "MACHINE_TYPE": "PCK",
+    "DEPT_CODE": "PCK",
+    "MACHINE_DEV": "PCK"
+  },
+  {
+    "MACHINE_ID": "POL001",
+    "MACHINE_DESC": "MultiFlex 2 - Haw",
+    "MACHINE_TYPE": "POLISHER",
+    "DEPT_CODE": "SUR",
+    "MACHINE_DEV": "POL"
+  },
+  {
+    "MACHINE_ID": "POL002",
+    "MACHINE_DESC": "MultiFlex 8 - Haw",
+    "MACHINE_TYPE": "POLISHER",
+    "DEPT_CODE": "SUR",
+    "MACHINE_DEV": "POL"
+  },
+  {
+    "MACHINE_ID": "POL003",
+    "MACHINE_DESC": "MultiFlex 3 - Haw",
+    "MACHINE_TYPE": "POLISHER",
+    "DEPT_CODE": "SUR",
+    "MACHINE_DEV": "POL"
+  },
+  {
+    "MACHINE_ID": "POL004",
+    "MACHINE_DESC": "MultiFlex 7 - Haw",
+    "MACHINE_TYPE": "POLISHER",
+    "DEPT_CODE": "SUR",
+    "MACHINE_DEV": "POL"
+  },
+  {
+    "MACHINE_ID": "POL005",
+    "MACHINE_DESC": "MultiFlex 4 - Haw",
+    "MACHINE_TYPE": "POLISHER",
+    "DEPT_CODE": "SUR",
+    "MACHINE_DEV": "POL"
+  },
+  {
+    "MACHINE_ID": "POL006",
+    "MACHINE_DESC": "MultiFlex 10 - Haw",
+    "MACHINE_TYPE": "POLISHER",
+    "DEPT_CODE": "SUR",
+    "MACHINE_DEV": "POL"
+  },
+  {
+    "MACHINE_ID": "POL007",
+    "MACHINE_DESC": "MultiFlex 9 - Haw",
+    "MACHINE_TYPE": "POLISHER",
+    "DEPT_CODE": "SUR",
+    "MACHINE_DEV": "POL"
+  },
+  {
+    "MACHINE_ID": "POL008",
+    "MACHINE_DESC": "MultiFlex 1 - Haw",
+    "MACHINE_TYPE": "POLISHER",
+    "DEPT_CODE": "SUR",
+    "MACHINE_DEV": "POL"
+  },
+  {
+    "MACHINE_ID": "POL027",
+    "MACHINE_DESC": "MultiFlex2 5 - Haw",
+    "MACHINE_TYPE": "POLISHER",
+    "DEPT_CODE": "SUR",
+    "MACHINE_DEV": "POL"
+  },
+  {
+    "MACHINE_ID": "POL028",
+    "MACHINE_DESC": "MultiFlex2 6 - Haw",
+    "MACHINE_TYPE": "POLISHER",
+    "DEPT_CODE": "SUR",
+    "MACHINE_DEV": "POL"
+  },
+  {
+    "MACHINE_ID": "POL029",
+    "MACHINE_DESC": "MultiFlex2 11 - Haw",
+    "MACHINE_TYPE": "POLISHER",
+    "DEPT_CODE": "SUR",
+    "MACHINE_DEV": "POL"
+  },
+  {
+    "MACHINE_ID": "PSC001",
+    "MACHINE_DESC": "Assembly Station #5 Drill",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "SUR",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC002",
+    "MACHINE_DESC": "Assembly Station #8",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "SUR",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC003",
+    "MACHINE_DESC": "Assembly Station #9",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC007",
+    "MACHINE_DESC": "Assembly Station #10",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC008",
+    "MACHINE_DESC": "QC Station 10",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "QC",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC009",
+    "MACHINE_DESC": "QC Station 11",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "QC",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC010",
+    "MACHINE_DESC": "Washing Station #2",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "BSC",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC011",
+    "MACHINE_DESC": "QC Station 8",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "BSC",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC012",
+    "MACHINE_DESC": "Out of Backside Coating Room",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "BSC",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC013",
+    "MACHINE_DESC": "Assembly Station #7",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "AR",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC014",
+    "MACHINE_DESC": "Assembly Station #6",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "QC",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC015",
+    "MACHINE_DESC": "Assembly Station #16",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC016",
+    "MACHINE_DESC": "Assembly Station #20",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": null,
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC017",
+    "MACHINE_DESC": "Assembly Station #18",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC018",
+    "MACHINE_DESC": "Assembly Station #13",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC019",
+    "MACHINE_DESC": "Assembly Station",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "QC",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC020",
+    "MACHINE_DESC": "Intermediate QC 1",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "QC",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC021",
+    "MACHINE_DESC": "QC Station 1",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "QC",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC022",
+    "MACHINE_DESC": "Intermediate QC 2",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "QC",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC023",
+    "MACHINE_DESC": "QC Station 2",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "QC",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC024",
+    "MACHINE_DESC": "QC Station 5",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "QC",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC025",
+    "MACHINE_DESC": "QC Station 9",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "QC",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC026",
+    "MACHINE_DESC": "Assembly Station #10",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC027",
+    "MACHINE_DESC": "QC Station 3",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "QC",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC028",
+    "MACHINE_DESC": "QC Station 4",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "QC",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC030",
+    "MACHINE_DESC": "QC Station 12",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC031",
+    "MACHINE_DESC": "QC Station 13",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC032",
+    "MACHINE_DESC": "Into Tinting",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "TIN",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC034",
+    "MACHINE_DESC": "Assembly Station #19",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC035",
+    "MACHINE_DESC": "Assembly Station #1 Drill",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC036",
+    "MACHINE_DESC": "Final QC Uncuts",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "AR",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC037",
+    "MACHINE_DESC": "Into Finishing",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "AR",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC038",
+    "MACHINE_DESC": "AR Cleaning Station #1",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "AR",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC039",
+    "MACHINE_DESC": "AR Cleaning Station #2",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "AR",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC040",
+    "MACHINE_DESC": "AR Cleaning Station #3",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "AR",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC041",
+    "MACHINE_DESC": "AR Cleaning Station #4",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "AR",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC043",
+    "MACHINE_DESC": "Assembly Station #11",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC044",
+    "MACHINE_DESC": "Assembly Station #17",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC045",
+    "MACHINE_DESC": "QC Station 7",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC046",
+    "MACHINE_DESC": "QC Station 6",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC047",
+    "MACHINE_DESC": "Assembly Station #2 Drill",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "AR",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC049",
+    "MACHINE_DESC": "Into Shipping",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "SHP",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC050",
+    "MACHINE_DESC": "Assembly Station #3 Drill",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC052",
+    "MACHINE_DESC": "Assembly Station #4 Drill",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC053",
+    "MACHINE_DESC": "Assembly Station 14",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC054",
+    "MACHINE_DESC": "Assembly Station #15",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC055",
+    "MACHINE_DESC": "Assembly Station #12",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC056",
+    "MACHINE_DESC": "Line 1 Filtertech",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "SUR",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC057",
+    "MACHINE_DESC": "Line 2 Filtertech",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": "SUR",
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC080",
+    "MACHINE_DESC": "TEST SCANNER",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": null,
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSC092",
+    "MACHINE_DESC": "Test Scanner Hawthorne",
+    "MACHINE_TYPE": "PSC",
+    "DEPT_CODE": null,
+    "MACHINE_DEV": "PSC"
+  },
+  {
+    "MACHINE_ID": "PSV002",
+    "MACHINE_DESC": "Pick, Scan & Verify HAW",
+    "MACHINE_TYPE": "SCV",
+    "DEPT_CODE": "PCK",
+    "MACHINE_DEV": "PSV"
+  },
+  {
+    "MACHINE_ID": "SBK001",
+    "MACHINE_DESC": "OptoTech A Blocker 1",
+    "MACHINE_TYPE": "BLOCKERS",
+    "DEPT_CODE": "SUR",
+    "MACHINE_DEV": "SBK"
+  },
+  {
+    "MACHINE_ID": "SBK005",
+    "MACHINE_DESC": "OptoTech A Blocker 2",
+    "MACHINE_TYPE": "BLOCKERS",
+    "DEPT_CODE": "SUR",
+    "MACHINE_DEV": "SBK"
+  },
+  {
+    "MACHINE_ID": "SCV001",
+    "MACHINE_DESC": "Scan & Verify #1-HAW",
+    "MACHINE_TYPE": "SCV",
+    "DEPT_CODE": "PCK",
+    "MACHINE_DEV": "SCV"
+  },
+  {
+    "MACHINE_ID": "SCV002",
+    "MACHINE_DESC": "Scan & Verify #2-HAW",
+    "MACHINE_TYPE": "SCV",
+    "DEPT_CODE": "PCK",
+    "MACHINE_DEV": "SCV"
+  },
+  {
+    "MACHINE_ID": "STD001",
+    "MACHINE_DESC": "PRA Blocker 1",
+    "MACHINE_TYPE": "STDVCA",
+    "DEPT_CODE": "SUR",
+    "MACHINE_DEV": "STD"
+  },
+  {
+    "MACHINE_ID": "STD002",
+    "MACHINE_DESC": "PRA Blocker 2",
+    "MACHINE_TYPE": "STDVCA",
+    "DEPT_CODE": "SUR",
+    "MACHINE_DEV": "STD"
+  },
+  {
+    "MACHINE_ID": "STD003",
+    "MACHINE_DESC": "PRA Blocker 3",
+    "MACHINE_TYPE": "STDVCA",
+    "DEPT_CODE": "SUR",
+    "MACHINE_DEV": "STD"
+  },
+  {
+    "MACHINE_ID": "STD004",
+    "MACHINE_DESC": "FoCo Server",
+    "MACHINE_TYPE": "STDVCA",
+    "DEPT_CODE": "QC",
+    "MACHINE_DEV": "STD"
+  },
+  {
+    "MACHINE_ID": "STD016",
+    "MACHINE_DESC": "Conveyor Switch 1 Hawthorne",
+    "MACHINE_TYPE": "STDVCA",
+    "DEPT_CODE": "SUR",
+    "MACHINE_DEV": "STD"
+  },
+  {
+    "MACHINE_ID": "STD017",
+    "MACHINE_DESC": "Conveyor 2 Hawthorne",
+    "MACHINE_TYPE": "STDVCA",
+    "DEPT_CODE": "SUR",
+    "MACHINE_DEV": "STD"
+  },
+  {
+    "MACHINE_ID": "TAP001",
+    "MACHINE_DESC": "Auto-Taper",
+    "MACHINE_TYPE": "TAPER",
+    "DEPT_CODE": "SUR",
+    "MACHINE_DEV": "TAP"
+  },
+  {
+    "MACHINE_ID": "TNT001",
+    "MACHINE_DESC": "Into Tinting",
+    "MACHINE_TYPE": "TNT",
+    "DEPT_CODE": "TIN",
+    "MACHINE_DEV": "TNT"
+  },
+  {
+    "MACHINE_ID": "TNT002",
+    "MACHINE_DESC": "Out of Tinting",
+    "MACHINE_TYPE": "TNT",
+    "DEPT_CODE": "TIN",
+    "MACHINE_DEV": "TNT"
+  },
+  {
+    "MACHINE_ID": "TRC001",
+    "MACHINE_DESC": "LT-1200#1",
+    "MACHINE_TYPE": "TRACER",
+    "DEPT_CODE": "TRC",
+    "MACHINE_DEV": "TRC"
+  },
+  {
+    "MACHINE_ID": "TRC002",
+    "MACHINE_DESC": "LT-1000 - Drilll Jobs",
+    "MACHINE_TYPE": "TRACER",
+    "DEPT_CODE": "TRC",
+    "MACHINE_DEV": "TRC"
+  },
+  {
+    "MACHINE_ID": "TRC003",
+    "MACHINE_DESC": "Optronics Tracer",
+    "MACHINE_TYPE": "NOTRACER",
+    "DEPT_CODE": "TRC",
+    "MACHINE_DEV": "TRC"
+  },
+  {
+    "MACHINE_ID": "TRC004",
+    "MACHINE_DESC": "LT-1200#4",
+    "MACHINE_TYPE": "TRACER",
+    "DEPT_CODE": "TRC",
+    "MACHINE_DEV": "TRC"
+  },
+  {
+    "MACHINE_ID": "TRC006",
+    "MACHINE_DESC": "Logical Tracer",
+    "MACHINE_TYPE": "TRACEREL",
+    "DEPT_CODE": "TRC",
+    "MACHINE_DEV": "TRC"
+  },
+  {
+    "MACHINE_ID": "TRC007",
+    "MACHINE_DESC": "LT-1200#2",
+    "MACHINE_TYPE": "TRACER",
+    "DEPT_CODE": "TRC",
+    "MACHINE_DEV": "TRC"
+  },
+  {
+    "MACHINE_ID": "TRC008",
+    "MACHINE_DESC": "Re-Trace",
+    "MACHINE_TYPE": "HTRACER",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "TRC"
+  },
+  {
+    "MACHINE_ID": "TRC011",
+    "MACHINE_DESC": "Drill LT-1200",
+    "MACHINE_TYPE": "TRACER",
+    "DEPT_CODE": "TRC",
+    "MACHINE_DEV": "TRC"
+  },
+  {
+    "MACHINE_ID": "TRC012",
+    "MACHINE_DESC": "MEI Shape Finder - Haw",
+    "MACHINE_TYPE": "TRACER",
+    "DEPT_CODE": "FIN",
+    "MACHINE_DEV": "TRC"
+  },
+  {
+    "MACHINE_ID": "TRC013",
+    "MACHINE_DESC": "LT-1200#3",
+    "MACHINE_TYPE": "TRACER",
+    "DEPT_CODE": "TRC",
+    "MACHINE_DEV": "TRC"
+  },
+  {
+    "MACHINE_ID": "TRC029",
+    "MACHINE_DESC": "LT-1200#5",
+    "MACHINE_TYPE": "TRACER",
+    "DEPT_CODE": "TRC",
+    "MACHINE_DEV": "TRC"
+  },
+  {
+    "MACHINE_ID": "TRC030",
+    "MACHINE_DESC": "LT-1200#6",
+    "MACHINE_TYPE": "TRACER",
+    "DEPT_CODE": "TRC",
+    "MACHINE_DEV": "TRC"
+  }
+]
