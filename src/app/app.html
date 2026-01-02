@@ -4,13 +4,16 @@
 <button (click)="btnClicked($event)">Create DETJOBM4 as JSON</button>
 
 <ul >
-  <li *ngFor="let Dev of Devs"
-      (click)="loadMachinesByDev(Dev)" >
-    {{ Dev }} 
+   <li *ngFor="let Dev of devices"
+      (click)="loadMachinesByDev(Dev.MACHINE_DEV)" >
+    Device {{ Dev.MACHINE_DEV}}, {{ Dev.MACHINE_DEV_DESC}}
   </li>
 </ul>
 
-<label for="cars">Choose a machine:</label>
+<label *ngIf="selmachines.length === 0 ">Select a device type to select a machine:</label>
+
+<div *ngIf="selmachines.length > 0 ">
+<label for="cars">Choose a {{ machine_dev }} machine:</label>
 <select id="cars" name="cars">
   <option *ngFor = "let selmachine of selmachines" 
   [value]="selmachine.MACHINE_ID">{{selmachine.MACHINE_DESC}}</option>
@@ -19,13 +22,10 @@
   <option value="mercedes">Mercedes</option>
   <option value="audi">Audi</option> -->
 </select>
-
-
+</div>
 
 
 <div class="lab-monitor">
-
-
 
   <div class="lab-map" (click)="mapClicked($event)">
  
@@ -51,6 +51,9 @@
 
   </div>
 </div>
+
+<button (click)="btnClicked($event)">Create Load Excel into JSON</button>
+
 
 
 <router-outlet />

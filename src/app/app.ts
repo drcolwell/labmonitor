@@ -2,10 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, signal, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 
 
 // import { DETMACH2 } from './app.model';
+
 import * as XLSX from 'xlsx';
 
 
@@ -17,12 +18,13 @@ import * as XLSX from 'xlsx';
 })
 export class App implements OnInit {
 
-  protected readonly title = signal('labmonitor');
+  protected readonly title = signal('Lab Monitor');
 
 selmachines: DETMACH2[] = [];
-
+machine_dev: string = '';
 
   Devs:string[] = ['EDG', 'GEN', 'POL','TRC'];
+
   DEFLMON1: any;
   DETMACH2s_DEV: DETMACH2[] = [];
   allmachines: DETMACH2[] = []
@@ -43,6 +45,8 @@ selmachines: DETMACH2[] = [];
     // }
   ];
 
+  DETMACH0_DEV: DETMACH0[] = [];
+  devices: DETMACH0[] = []
 
   stats: DETJOBM4[] = [
     {
@@ -59,12 +63,12 @@ selmachines: DETMACH2[] = [];
 
 constructor(private http: HttpClient) {}
 
-  ngOnInit() {
-    this.readJsonFile();
+  async ngOnInit() {
+    await this.readJsonFile();
   }
 
-  readJsonFile() {
-    this.http.get<DETJOBM4[]>('assets/data/STATS.json')
+  async readJsonFile() {
+    await this.http.get<DETJOBM4[]>('assets/data/STATS.json')
       .pipe(
         // Map the array of objects to an array of strings (e.g., the 'name' property)
         // map(data => data.map(item => item.name)) 
@@ -73,7 +77,8 @@ constructor(private http: HttpClient) {}
         this.stats = result;
         console.log(this.stats); 
       });
-    this.http.get<DETMACH2[]>('assets/data/DETMACH2_HAW.json')
+     
+    await this.http.get<DETMACH2[]>('assets/data/DETMACH2_HAW.json')
       .pipe(
         // map(machine:DETMACH2){
         //   machine.selected = false;
@@ -83,14 +88,26 @@ constructor(private http: HttpClient) {}
       )
       .subscribe(result => {
         this.allmachines = result;
-        console.log(this.machines); 
+        console.log(this.allmachines); 
       });
 
+    await this.http.get<DETMACH0[]>('assets/data/DETMACH0.json')
+      .pipe(
+        // filter((device: DETMACH0) => (device.MACHINE_DEV === 'EDG') )      
+         )
+      .subscribe(result => {
+        console.log('devices', result); 
+        this.devices = result
+        // this.devices = result.filter((device: DETMACH0) => 
+        //   device.MACHINE_DEV === 'GEN' );
+        console.log(this.devices); 
+      });
 
   }
 
   loadMachinesByDev(dev: string) {
     console.log('Loading machines for dev:', dev);
+    this.machine_dev = dev;
     this.selmachines = this.allmachines.filter(machine => machine.MACHINE_DEV === dev);
     console.log('Filtered machines:', this.selmachines);  
   }
@@ -113,13 +130,15 @@ constructor(private http: HttpClient) {}
 // this is DRC's attempt to import an Excel file and convert it to JSON
 // Function to convert the Excel file to JSON
 
- excelFilePath: string = '/srcc/assets/data/STATS.xlsx';
+ excelFilePath: string = 'public/assets/data/STATS.xlsx';
  
 //excelFilePath: string = 'C:\\Users\\drc\\Desktop\\For Review\\Project Data\\Stats.xls';
- jsonFilePath: string = 'C:\\Projects\\labmonitor\\src\\assets\\dataStats.json';
+ jsonFilePath: string = 'C:\\Projects\\labmonitor\\public\\assets\\data\Stats1.json';
 
  btnClicked(event: MouseEvent) {
     console.log('Btn clicked', event);
+    
+
     this.convertExcelToJson(this.excelFilePath, this.jsonFilePath)
   }
 
@@ -190,6 +209,20 @@ export class DETJOBM4 {
   INIT_DATE!: Date;
   MACHINE_ID!: string;
 }
+
+
+
+
+// loadExcel() {
+//   this.http.get('assets/report.xlsx', { responseType: 'arraybuffer' })
+//     .subscribe(data => {
+//       const workbook = XLSX.read(data, { type: 'array' });
+//       const sheet = workbook.Sheets[workbook.SheetNames[0]];
+//       const json = XLSX.utils.sheet_to_json(sheet);
+//       console.log(json);
+//     });
+
+
 
 
 

@@ -1,0 +1,324 @@
+[
+  {
+    "MACHINE_DEV": "ABS",
+    "MACHINE_DEV_DESC": "ABS",
+    "MACHINE_NON_VCA": "0",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "000"
+  },
+  {
+    "MACHINE_DEV": "AGN",
+    "MACHINE_DEV_DESC": "Laminator",
+    "MACHINE_NON_VCA": "0",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "000"
+  },
+  {
+    "MACHINE_DEV": "ARC",
+    "MACHINE_DEV_DESC": "AR Chambers",
+    "MACHINE_NON_VCA": "0",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "525"
+  },
+  {
+    "MACHINE_DEV": "ARD",
+    "MACHINE_DEV_DESC": "AR Dip Coat",
+    "MACHINE_NON_VCA": "0",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "500"
+  },
+  {
+    "MACHINE_DEV": "ARO",
+    "MACHINE_DEV_DESC": "AR Oven",
+    "MACHINE_NON_VCA": "0",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "520"
+  },
+  {
+    "MACHINE_DEV": "ARP",
+    "MACHINE_DEV_DESC": "AR Pass Thru Oven",
+    "MACHINE_NON_VCA": "0",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "520"
+  },
+  {
+    "MACHINE_DEV": "ARU",
+    "MACHINE_DEV_DESC": "AR Ultrasonic Cleaners",
+    "MACHINE_NON_VCA": "1",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "510"
+  },
+  {
+    "MACHINE_DEV": "BAS",
+    "MACHINE_DEV_DESC": "Blank Slct Resp(LMS > LDS)",
+    "MACHINE_NON_VCA": "1",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "114"
+  },
+  {
+    "MACHINE_DEV": "BCR",
+    "MACHINE_DEV_DESC": "Base Curve Request",
+    "MACHINE_NON_VCA": "1",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "113"
+  },
+  {
+    "MACHINE_DEV": "BFR",
+    "MACHINE_DEV_DESC": "Buffer",
+    "MACHINE_NON_VCA": "1",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "000"
+  },
+  {
+    "MACHINE_DEV": "BRK",
+    "MACHINE_DEV_DESC": "Breakage",
+    "MACHINE_NON_VCA": "1",
+    "MACHINE_FORM_NAME": "DEFBRKG1",
+    "STATUS_CODE": "390"
+  },
+  {
+    "MACHINE_DEV": "BRS",
+    "MACHINE_DEV_DESC": "Blank Selection Resolved",
+    "MACHINE_NON_VCA": "0",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "115"
+  },
+  {
+    "MACHINE_DEV": "CAD",
+    "MACHINE_DEV_DESC": "Weco CAD Blocker",
+    "MACHINE_NON_VCA": "1",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "000"
+  },
+  {
+    "MACHINE_DEV": "COA",
+    "MACHINE_DEV_DESC": "Surface Coater",
+    "MACHINE_NON_VCA": "0",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "000"
+  },
+  {
+    "MACHINE_DEV": "CSW",
+    "MACHINE_DEV_DESC": "Conveyor Switch",
+    "MACHINE_NON_VCA": "1",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "000"
+  },
+  {
+    "MACHINE_DEV": "CTR",
+    "MACHINE_DEV_DESC": "Coater",
+    "MACHINE_NON_VCA": "1",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "360"
+  },
+  {
+    "MACHINE_DEV": "DNL",
+    "MACHINE_DEV_DESC": "Generic Download Device",
+    "MACHINE_NON_VCA": "0",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "000"
+  },
+  {
+    "MACHINE_DEV": "DRL",
+    "MACHINE_DEV_DESC": "Drill",
+    "MACHINE_NON_VCA": "0",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "420"
+  },
+  {
+    "MACHINE_DEV": "EDG",
+    "MACHINE_DEV_DESC": "Edger",
+    "MACHINE_NON_VCA": "0",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "400"
+  },
+  {
+    "MACHINE_DEV": "ENG",
+    "MACHINE_DEV_DESC": "Engraver",
+    "MACHINE_NON_VCA": "0",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "340"
+  },
+  {
+    "MACHINE_DEV": "FBK",
+    "MACHINE_DEV_DESC": "Finishing Blocker",
+    "MACHINE_NON_VCA": "0",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "379"
+  },
+  {
+    "MACHINE_DEV": "FIL",
+    "MACHINE_DEV_DESC": "File",
+    "MACHINE_NON_VCA": "0",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "000"
+  },
+  {
+    "MACHINE_DEV": "FSG",
+    "MACHINE_DEV_DESC": "Direct surface generator",
+    "MACHINE_NON_VCA": "0",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "000"
+  },
+  {
+    "MACHINE_DEV": "FSP",
+    "MACHINE_DEV_DESC": "Direct Surface Polisher",
+    "MACHINE_NON_VCA": "0",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "000"
+  },
+  {
+    "MACHINE_DEV": "GEN",
+    "MACHINE_DEV_DESC": "Generator (VFT)",
+    "MACHINE_NON_VCA": "0",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "300"
+  },
+  {
+    "MACHINE_DEV": "GRN",
+    "MACHINE_DEV_DESC": "Handstone",
+    "MACHINE_NON_VCA": "1",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "000"
+  },
+  {
+    "MACHINE_DEV": "INS",
+    "MACHINE_DEV_DESC": "Inspection Device",
+    "MACHINE_NON_VCA": "0",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "000"
+  },
+  {
+    "MACHINE_DEV": "LAP",
+    "MACHINE_DEV_DESC": "LAP Feeder",
+    "MACHINE_NON_VCA": "0",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "000"
+  },
+  {
+    "MACHINE_DEV": "LDS",
+    "MACHINE_DEV_DESC": "Lens Design System download",
+    "MACHINE_NON_VCA": "1",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "170"
+  },
+  {
+    "MACHINE_DEV": "LMD",
+    "MACHINE_DEV_DESC": "Lens measuring device",
+    "MACHINE_NON_VCA": "0",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "000"
+  },
+  {
+    "MACHINE_DEV": "LMS",
+    "MACHINE_DEV_DESC": "Host upload from LDS",
+    "MACHINE_NON_VCA": "1",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "180"
+  },
+  {
+    "MACHINE_DEV": "LNS",
+    "MACHINE_DEV_DESC": "Lensometer",
+    "MACHINE_NON_VCA": "1",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "000"
+  },
+  {
+    "MACHINE_DEV": "NGN",
+    "MACHINE_DEV_DESC": "NOP Generator",
+    "MACHINE_NON_VCA": "0",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "300"
+  },
+  {
+    "MACHINE_DEV": "PCK",
+    "MACHINE_DEV_DESC": "Picking",
+    "MACHINE_NON_VCA": "1",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "230"
+  },
+  {
+    "MACHINE_DEV": "POL",
+    "MACHINE_DEV_DESC": "Polisher",
+    "MACHINE_NON_VCA": "0",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "320"
+  },
+  {
+    "MACHINE_DEV": "PRT",
+    "MACHINE_DEV_DESC": "Printed",
+    "MACHINE_NON_VCA": "0",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "000"
+  },
+  {
+    "MACHINE_DEV": "PSC",
+    "MACHINE_DEV_DESC": "Passive Scanners",
+    "MACHINE_NON_VCA": "1",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "000"
+  },
+  {
+    "MACHINE_DEV": "PTG",
+    "MACHINE_DEV_DESC": "Pattern generator",
+    "MACHINE_NON_VCA": "0",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "000"
+  },
+  {
+    "MACHINE_DEV": "PTR",
+    "MACHINE_DEV_DESC": "Lens Printer",
+    "MACHINE_NON_VCA": "1",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "345"
+  },
+  {
+    "MACHINE_DEV": "SBK",
+    "MACHINE_DEV_DESC": "Surface Blocker",
+    "MACHINE_NON_VCA": "0",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "280"
+  },
+  {
+    "MACHINE_DEV": "SCV",
+    "MACHINE_DEV_DESC": "Scan/Verify",
+    "MACHINE_NON_VCA": "1",
+    "MACHINE_FORM_NAME": "DEFSVER1",
+    "STATUS_CODE": "240"
+  },
+  {
+    "MACHINE_DEV": "STD",
+    "MACHINE_DEV_DESC": "Standard VCA",
+    "MACHINE_NON_VCA": "0",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "000"
+  },
+  {
+    "MACHINE_DEV": "TAP",
+    "MACHINE_DEV_DESC": "Taper",
+    "MACHINE_NON_VCA": "1",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "270"
+  },
+  {
+    "MACHINE_DEV": "TNT",
+    "MACHINE_DEV_DESC": "Tinting",
+    "MACHINE_NON_VCA": "1",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "000"
+  },
+  {
+    "MACHINE_DEV": "TRC",
+    "MACHINE_DEV_DESC": "Tracer",
+    "MACHINE_NON_VCA": "0",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "150"
+  },
+  {
+    "MACHINE_DEV": "UPL",
+    "MACHINE_DEV_DESC": "Generic Upload Device",
+    "MACHINE_NON_VCA": "0",
+    "MACHINE_FORM_NAME": null,
+    "STATUS_CODE": "000"
+  }
+]
