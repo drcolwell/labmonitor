@@ -9,6 +9,13 @@ width: 600px;
 flex-grow: 1;
 }
 
+.lab-machine-selected {
+margin: 5px;
+z-index:5;
+width: 50px;
+height: 50px;
+}
+
 .lab-machine {
 position: absolute;
 margin: 5px;

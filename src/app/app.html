@@ -3,9 +3,8 @@
 
 <button (click)="btnClicked($event)">Create DETJOBM4 as JSON</button>
 
-<ul >
-   <li *ngFor="let Dev of devices"
-      (click)="loadMachinesByDev(Dev.MACHINE_DEV)" >
+<ul>
+  <li *ngFor="let Dev of devices" (click)="loadMachinesByDev(Dev.MACHINE_DEV)">
     Device {{ Dev.MACHINE_DEV}}, {{ Dev.MACHINE_DEV_DESC}}
   </li>
 </ul>
@@ -13,41 +12,48 @@
 <label *ngIf="selmachines.length === 0 ">Select a device type to select a machine:</label>
 
 <div *ngIf="selmachines.length > 0 ">
-<label for="cars">Choose a {{ machine_dev }} machine:</label>
-<select id="cars" name="cars">
-  <option *ngFor = "let selmachine of selmachines" 
-  [value]="selmachine.MACHINE_ID">{{selmachine.MACHINE_DESC}}</option>
-  <!-- <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option> -->
-</select>
-</div>
+  <div>
+    <img class="lab-machine-selected" src="assets/images/MACHINE_DEV/{{machine_dev}}.jpg" />
+    <!-- {{ selectedDETMACH2fc }} -->
+    {{ selectedDETMACH2fc | json}}
+  </div>
+  <label for="cars">Choose a {{ machine_dev }} machine:</label>
+  <select id="cars" name="cars" (change)="onChange($event)">>
+    <option *ngFor="let selmachine of selmachines" 
+    
+    [value]="selmachine.MACHINE_ID">{{selmachine.MACHINE_DESC}}</option>
+  </select>
 
+  
+  <button mat-raised-button color="primary" (click)="addMachine()"
+  class="footer-controls">
+      Add Machine
+  </button>
+
+  <button mat-raised-button color="secondary" (click)="addAllMachines()"
+  class="footer-controls">
+      Add All Machines
+  </button>
+</div>
 
 <div class="lab-monitor">
 
   <div class="lab-map" (click)="mapClicked($event)">
- 
+
     <!-- [matTooltip]="machine.MACHINE_ID" -->
 
-    <div class="lab-machine"
+    <div class="lab-machine" [ngClass]="{'selected': machine.selected}" 
+      *ngFor="let machine of machines"
+      [style.top.px]="machine.initialPosition.y" 
+      [style.left.px]="machine.initialPosition.x"     
+      cdkDragBoundary=".example-boundary" (cdkDragEnded)="dragEnd($event, machine)"
+      cdkDrag>
 
-                                [ngClass]="{'selected': machine.selected}"
-                                *ngFor="let machine of machines"
-                                [style.top.px]="machine.initialPosition.y"
-                                [style.left.px]="machine.initialPosition.x"
-                               
-                                                         
-
-                                cdkDragBoundary=".example-boundary"
-                                (cdkDragEnded)="dragEnd($event, machine)"
-                                cdkDrag>
-                                <div class="ring"></div>
-                                <div class="machine-image" (click)="selectMachine(machine, $event)">
-                                  <img class="lab-machine-image" [src]="machine.machineImageUrl" >
-                                </div>
-                              </div>
+      <div class="ring"></div>
+      <div class="machine-image" (click)="selectMachine(machine, $event)">
+        <img class="lab-machine-image" [src]="machine.machineImageUrl">
+      </div>
+    </div>
 
   </div>
 </div>

@@ -1,27 +1,29 @@
 import { CommonModule } from '@angular/common';
-import { Component, signal, OnInit } from '@angular/core';
+import { Component, signal, OnInit, AfterViewInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { filter, map } from 'rxjs/operators';
+import {CdkDrag} from '@angular/cdk/drag-drop';
 
 
 // import { DETMACH2 } from './app.model';
 
-import * as XLSX from 'xlsx';
+// import * as XLSX from 'xlsx';
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule],
+  imports: [RouterOutlet, CommonModule, CdkDrag],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
-export class App implements OnInit {
+export class App implements OnInit, AfterViewInit {
 
   protected readonly title = signal('Lab Monitor');
 
 selmachines: DETMACH2[] = [];
 machine_dev: string = '';
+selectedDETMACH2fc!: DETMACH2;
 
   Devs:string[] = ['EDG', 'GEN', 'POL','TRC'];
 
@@ -30,19 +32,30 @@ machine_dev: string = '';
   allmachines: DETMACH2[] = []
 
   machines: DETMACH2[] = [
-    // {
-    //   MACHINE_ID: 'M001',
-    //   MACHINE_DESC: 'Lathe Machine',
-    //   DEPT_CODE: 'D01',
-    //   MACHINE_DEV: 'DEV001',
-    //   MACHINE_TYPE: 'Lathe',
-    //   selected: false,
+    {
+      MACHINE_ID: 'M001',
+      MACHINE_DESC: 'Lathe Machine',
+      DEPT_CODE: 'D01',
+      MACHINE_DEV: 'GEN',
+      MACHINE_TYPE: 'Lathe',
+      selected: false,
+      position: { x: 100, y: 100 },
+      initialPosition: { x: 100, y: 100 },
+      machineImageUrl: 'https://absapi.absolution1.com/mystaticfiles/generator.jpg'
 
-    //   position: { x: 100, y: 100 },
-    //   initialPosition: { x: 100, y: 100 },
-    //   machineImageUrl: 'https://absapi.absolution1.com/mystaticfiles/generator.jpg'
+    },
+    {
+      MACHINE_ID: 'M002',
+      MACHINE_DESC: 'Lathe Machine',
+      DEPT_CODE: 'D01',
+      MACHINE_DEV: 'POL',
+      MACHINE_TYPE: 'Lathe',
+      selected: true,
+      position: { x: 200, y: 200 },
+      initialPosition: { x: 200, y: 200 },
+      machineImageUrl: 'https://absapi.absolution1.com/mystaticfiles/polisher.jpg'
 
-    // }
+    }
   ];
 
   DETMACH0_DEV: DETMACH0[] = [];
@@ -63,22 +76,31 @@ machine_dev: string = '';
 
 constructor(private http: HttpClient) {}
 
-  async ngOnInit() {
-    await this.readJsonFile();
+  async ngAfterViewInit() {
+    // await this.readJsonFile();
   }
 
-  async readJsonFile() {
-    await this.http.get<DETJOBM4[]>('assets/data/STATS.json')
+  ngOnInit() {
+    console.log('before')
+    this.readJsonFile();
+    console.log('after')
+  }
+
+  readJsonFile() {
+    console.log('1 started STATS')
+    this.http.get<DETJOBM4[]>('assets/data/STATS.json')
       .pipe(
         // Map the array of objects to an array of strings (e.g., the 'name' property)
         // map(data => data.map(item => item.name)) 
       )
       .subscribe(result => {
+        console.log('1 completed STATS')
         this.stats = result;
         console.log(this.stats); 
       });
      
-    await this.http.get<DETMACH2[]>('assets/data/DETMACH2_HAW.json')
+    console.log('2 started DETMACH2_HAW')
+    this.http.get<DETMACH2[]>('assets/data/DETMACH2_HAW.json')
       .pipe(
         // map(machine:DETMACH2){
         //   machine.selected = false;
@@ -87,29 +109,59 @@ constructor(private http: HttpClient) {}
         // }     
       )
       .subscribe(result => {
+        console.log('2 completed DETMACH2_HAW')        
         this.allmachines = result;
         console.log(this.allmachines); 
       });
 
-    await this.http.get<DETMACH0[]>('assets/data/DETMACH0.json')
+    console.log('3 started DETMACH0')
+    this.http.get<DETMACH0[]>('assets/data/DETMACH0.json')
       .pipe(
-        // filter((device: DETMACH0) => (device.MACHINE_DEV === 'EDG') )      
+        // filter((device: DETMACH0) => (device.MACHINE_DEV === 'GEN'))
+         map((arr: DETMACH0[]) => 
+          (arr.filter(device => device.MACHINE_DEV === 'GEN'
+          || device.MACHINE_DEV === 'EDG'
+         )))     
          )
       .subscribe(result => {
+        console.log('3 completed DETMACH0')
         console.log('devices', result); 
-        this.devices = result
-        // this.devices = result.filter((device: DETMACH0) => 
-        //   device.MACHINE_DEV === 'GEN' );
+        // this.devices = result
+        this.devices = result.filter((device: DETMACH0) => 
+          device.MACHINE_DEV === 'GEN' 
+          || device.MACHINE_DEV === 'EDG' 
+          || device.MACHINE_DEV === 'POL' 
+          || device.MACHINE_DEV === 'TRC' );
         console.log(this.devices); 
       });
 
   }
 
+  onChange(event: Event): void {
+    const selectElement = event.target as HTMLSelectElement;
+    console.log (selectElement.value)
+    let m = this.selmachines.filter(x => x.MACHINE_ID === selectElement.value )
+    // this needs to be refactored using a map object
+    console.log (m)
+    if (m) {
+      // this.selectedDETMACH2fc = m[0]
+      this.set_selectedDETMACH2fc(m[0])
+    }
+    // this.selectedDETMACH2fc = selectElement.value;
+  }
+
+  set_selectedDETMACH2fc(m:DETMACH2) {
+     this.selectedDETMACH2fc = m
+  }
   loadMachinesByDev(dev: string) {
     console.log('Loading machines for dev:', dev);
     this.machine_dev = dev;
     this.selmachines = this.allmachines.filter(machine => machine.MACHINE_DEV === dev);
     console.log('Filtered machines:', this.selmachines);  
+
+    // need to get the value currently loaded in the select and call set_selectedDETMACH2fc
+    let m:DETMACH2 = this.selmachines[0]
+    this.set_selectedDETMACH2fc(m)
   }
 
   mapClicked(event: MouseEvent) {
@@ -127,6 +179,89 @@ constructor(private http: HttpClient) {}
 
 
 
+
+  
+  addMachine() {
+    // if (this.selectedDETMACH2fc.value) {
+    //   const machineToAdd = this.selectedDETMACH2fc.value;
+    if (this.selectedDETMACH2fc) {
+      const machineToAdd = this.selectedDETMACH2fc;
+      // const existingMachineArray = this.machines.find(x => x.MACHINE_ID === machineToAdd.MACHINE_ID);
+      // console.log('keyed array', this.array2Dictionary(this.machines, 'MACHINE_ID'));
+
+      // const machineDictionary = this.array2Dictionary(this.machines, 'MACHINE_ID');
+      // const existingMachineArray = machineDictionary[machineToAdd.MACHINE_ID];
+      // const existingMachine = existingMachineArray ? existingMachineArray[0] : undefined; // this is the best way
+      // // const existingMachine = existingMachineArray ? Object.assign(existingMachineArray[0]) : undefined; // works
+      // // const existingMachine = existingMachineArray ? Object.assign({}, existingMachineArray[0]) : undefined; // does not work
+      // // const existingMachine = existingMachineArray ? {...existingMachineArray[0]} : undefined; // does not work
+      // if (existingMachine) {
+      //   // existingMachine.MACHINE_DESC = 'hijacked';
+      // }
+
+let m:DETMACH2 = {...this.selectedDETMACH2fc, 
+  selected: false, 
+  position: { x: 300, y: 300 },
+  initialPosition: { x: 300, y: 300 },
+  machineImageUrl: 'https://absapi.absolution1.com/mystaticfiles/MACHINE_DEV/' + this.selectedDETMACH2fc.MACHINE_DEV + '.jpg'
+}
+
+console.log(m)
+
+this.machines.push(m)
+
+// the next block of code is important to understand and to get to work
+      // const existingMachine = this.mapByKey(this.machines, 'MACHINE_ID')[machineToAdd.MACHINE_ID];
+      // if ( existingMachine ) {
+      //   console.log(existingMachine);
+      //   this.showSnackBar('Machine has already been added', 'Show Me', () => {this.selectMachine(existingMachine); });
+      // } else {
+      //   this.addMachine2Machines(machineToAdd, this.selectedDETMACH0fc.value.MACHINE_DEV_IMAGE);
+      // }
+    }
+  }
+
+  addAllMachines() {
+    // // for (const machineToAdd of this.dst['DETMACH2s']) {
+    // //   if (['GEN', 'TRC', 'POL', 'EDG'].includes(machineToAdd.MACHINE_DEV)) {
+    // //     this.addMachine2Machines(machineToAdd);
+    // //   }
+    // // }
+
+    // for (const DETMACH0 of this.dst['DETMACH0s']) {
+    //   if (['GEN', 'TRC', 'POL', 'EDG'].includes(DETMACH0.MACHINE_DEV)) {
+    //     for (const machineToAdd of this.dst['DETMACH2s'].filter(x => x.MACHINE_DEV === DETMACH0.MACHINE_DEV)) {
+    //       this.addMachine2Machines(machineToAdd, DETMACH0.MACHINE_DEV_IMAGE);
+    //     }
+    //   }
+    // }
+
+  }
+
+  addMachine2Machines(machineToAdd: DETMACH2, MACHINE_DEV_IMAGE: string) {
+    // const initialPosition = { x: 0, y: 0 };
+
+    // const machine = {
+    //   MACHINE_ID: machineToAdd.MACHINE_ID,
+    //   MACHINE_DESC: machineToAdd.MACHINE_DESC,
+    //   DEPT_CODE: '',
+    //   MACHINE_DEV: machineToAdd.MACHINE_DEV,
+    //   MACHINE_TYPE: machineToAdd.MACHINE_TYPE,
+    //   selected: false,
+    //   position: { ...initialPosition },
+    //   initialPosition: { ...initialPosition },
+    //   machineImageUrl: environment.urlBaseImages + MACHINE_DEV_IMAGE,
+    //   // machineTags: ['tag 1', 'tag 2'],
+    //   // machineStatus: 'A',
+    //   // currentJobNo: ''
+    // };
+    // this.machines.push(machine);
+    // // console.log(this.machines);
+  }
+
+
+
+
 // this is DRC's attempt to import an Excel file and convert it to JSON
 // Function to convert the Excel file to JSON
 
@@ -139,29 +274,29 @@ constructor(private http: HttpClient) {}
     console.log('Btn clicked', event);
     
 
-    this.convertExcelToJson(this.excelFilePath, this.jsonFilePath)
+    //this.convertExcelToJson(this.excelFilePath, this.jsonFilePath)
   }
 
 
-convertExcelToJson(excelFilePath: string, jsonFilePath: string) {
-  // Read the Excel file
-  const workbook = XLSX.readFile(excelFilePath);
+// convertExcelToJson(excelFilePath: string, jsonFilePath: string) {
+//   // Read the Excel file
+//   const workbook = XLSX.readFile(excelFilePath);
 
-  // Get the first sheet (you can specify a different sheet if necessary)
-  const sheetName = workbook.SheetNames[0];
-  const sheet = workbook.Sheets[sheetName];
+//   // Get the first sheet (you can specify a different sheet if necessary)
+//   const sheetName = workbook.SheetNames[0];
+//   const sheet = workbook.Sheets[sheetName];
 
-  // Convert the sheet to JSON
-  const jsonData = XLSX.utils.sheet_to_json(sheet);
+//   // Convert the sheet to JSON
+//   const jsonData = XLSX.utils.sheet_to_json(sheet);
 
-  // Write the JSON data to a file
-  //fs.writeFileSync(jsonFilePath, JSON.stringify(jsonData, null, 2), 'utf-8');
+//   // Write the JSON data to a file
+//   //fs.writeFileSync(jsonFilePath, JSON.stringify(jsonData, null, 2), 'utf-8');
 
-console.log({jsonData});
-console.log(jsonData);
+// console.log({jsonData});
+// console.log(jsonData);
 
-  //console.log(`Data has been converted to JSON and saved to ${jsonFilePath}`);
-}
+//   //console.log(`Data has been converted to JSON and saved to ${jsonFilePath}`);
+// }
 
 
 
@@ -221,10 +356,3 @@ export class DETJOBM4 {
 //       const json = XLSX.utils.sheet_to_json(sheet);
 //       console.log(json);
 //     });
-
-
-
-
-
-
-
