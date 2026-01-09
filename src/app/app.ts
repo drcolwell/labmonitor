@@ -77,7 +77,12 @@ export class App implements OnInit, AfterViewInit {
   ];
   selectedDETMACH2: any;
 
-constructor(private http: HttpClient) {}
+constructor(private http: HttpClient) {
+ 
+let today = new Date();
+console.log('formatted date', today, this.formatDate(today));
+
+}
 
   async ngAfterViewInit() {
     // await this.readJsonFile();
@@ -87,10 +92,35 @@ constructor(private http: HttpClient) {}
   }
 
   
-  
 
   iSTAT: number = -1
   signalRService_DETJOBM4s$!: BehaviorSubject<DETJOBM4[]>
+
+  formatDate(dateIn: Date) {
+  let yyyy:number = dateIn.getFullYear();
+  let MM:number = dateIn.getMonth() + 1; // getMonth() is zero-based
+  let dd:number = dateIn.getDate();
+  let HH:number = dateIn.getHours();
+  let mm:number = dateIn.getMinutes();
+  let ss:number = dateIn.getSeconds();
+  return String(this.formatNumPad(yyyy,4,'0') 
+              + this.formatNumPad(MM,2,'0') 
+              + this.formatNumPad(dd,2,'0') 
+              + this.formatNumPad(HH,2,'0') 
+              + this.formatNumPad(mm,2,'0') 
+              + this.formatNumPad(ss,2,'0')
+            )
+}
+
+formatNumPad(n:number, padLen:number, padChar: string): string {
+  let pfx: string = '0000000000'
+  let val: string = pfx + n.toFixed(0).toString()
+  
+  let start: number = val.length - padLen
+  let xxx: string = val.substring(start,start+padLen)
+  // console.log({n, padLen, padChar, pfx,val,start,xxx})
+  return xxx
+}
 
   ngOnInit() {
     // console.log('before')
@@ -102,16 +132,45 @@ constructor(private http: HttpClient) {}
     this.signalRService_DETJOBM4s$ = new BehaviorSubject<DETJOBM4[]>([])
 
     setInterval(() => {
-      let start:number = this.iSTAT+1
-      this.iSTAT +=10
-      let finish:number = this.iSTAT
-      let Ds:DETJOBM4[] = []
-      for (let i = start; i < finish; i++) {
-        Ds.push(this.stats[i])
+
+      // this block gets the next 10 array elements from this.stats
+      // let start:number = this.iSTAT+1
+      // this.iSTAT +=10
+      // let finish:number = this.iSTAT
+      // let Ds:DETJOBM4[] = []
+      // for (let i = start; i < finish; i++) {
+      //   Ds.push(this.stats[i])
+      // }
+
+      // this block gets the array elements from this.stats
+      // from the last index used +1, to the array element whose INIT_DATE <= now
+      let start:number = this.iSTAT+1;
+      let Ds:DETJOBM4[] = [];
+      let finish: string = this.formatDate(new Date())
+      
+      // 20260109135952
+
+      for (let i = start; i < start + 10000; i++) {
+        let d:Date = new Date(this.stats[i].INIT_DATE)
+        // console.log({d}, this.stats[i].INIT_DATE)
+        if (this.formatDate(d).substring(8) > finish.substring(8)) {break;}
+
+        this.iSTAT++
+
+        if (this.formatDate(d).substring(8) > '140000') {
+          console.log(this.formatDate(d).substring(8))
+          Ds.push(this.stats[i])
+          console.log({Ds})
+          this.signalRService_DETJOBM4s$.next(Ds)
+        } else {
+          console.log(this.formatDate(d).substring(8))
+        }
       }
-      this.signalRService_DETJOBM4s$.next(Ds)
-      }, 10000)
+
+
+      }, 2000)
     
+    // this.signalRService.DETJOBM4s$.subscribe(
     this.signalRService_DETJOBM4s$.subscribe(
       (DETJOBM4s: DETJOBM4[]) => {
         console.log(DETJOBM4s);
