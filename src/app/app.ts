@@ -8,7 +8,7 @@ import {CdkDrag} from '@angular/cdk/drag-drop';
 
 // import { DETMACH2 } from './app.model';
 
-// import * as XLSX from 'xlsx';
+import * as XLSX from 'xlsx';
 
 
 @Component({
@@ -21,9 +21,10 @@ export class App implements OnInit, AfterViewInit {
 
   protected readonly title = signal('Lab Monitor');
 
-selmachines: DETMACH2[] = [];
-machine_dev: string = '';
-selectedDETMACH2fc!: DETMACH2;
+  selmachines: DETMACH2[] = [];
+  machine_dev: string = '';
+  selectedDETMACH2fc!: DETMACH2;
+  showDetailsPane = false;
 
   Devs:string[] = ['EDG', 'GEN', 'POL','TRC'];
 
@@ -50,7 +51,7 @@ selectedDETMACH2fc!: DETMACH2;
       DEPT_CODE: 'D01',
       MACHINE_DEV: 'POL',
       MACHINE_TYPE: 'Lathe',
-      selected: true,
+      selected: false,
       position: { x: 200, y: 200 },
       initialPosition: { x: 200, y: 200 },
       machineImageUrl: 'https://absapi.absolution1.com/mystaticfiles/polisher.jpg'
@@ -78,14 +79,17 @@ constructor(private http: HttpClient) {}
 
   async ngAfterViewInit() {
     // await this.readJsonFile();
-  }
-
-  ngOnInit() {
-    console.log('before')
+        console.log('before')
     this.readJsonFile();
     console.log('after')
   }
 
+  ngOnInit() {
+    // console.log('before')
+    // this.readJsonFile();
+    // console.log('after')
+  }
+  
   readJsonFile() {
     console.log('1 started STATS')
     this.http.get<DETJOBM4[]>('assets/data/STATS.json')
@@ -166,19 +170,33 @@ constructor(private http: HttpClient) {}
 
   mapClicked(event: MouseEvent) {
     console.log('Map clicked', event);
+    this.machines.forEach(x => {x.selected = false; });
+    this.showDetailsPane = false;
+  }
+  
+  pingMachine(mIndex:number, event:any) {
+    // this.machines[mIndex].selected = true;
+    // setTimeout(() => {this.machines[mIndex].selected = false;},3000)
+    this.selectMachine(this.machines[mIndex], event)
   }
 
-  selectMachine(machine: any, event: MouseEvent) {
-    event.stopPropagation();
-    console.log('Machine selected', machine);
+  selectMachine(selectedMachine: DETMACH2, event:any) {
+
+    if (event) {
+      event.stopPropagation();
+    }
+
+    console.log('this is the newly selected machine ->', selectedMachine);
+    this.machines.forEach(x => { x.selected = false; });
+    // selectedMachine.selected = true;
+    setTimeout(() => selectedMachine.selected = true, 0); // nec because we are using anglar to create the ping
+    this.selectedDETMACH2 = selectedMachine;
+    this.showDetailsPane = true;
   }
 
   dragEnd(event: any, machine: any) {
     console.log('Drag ended for machine', machine, 'with event', event);
   }
-
-
-
 
   
   addMachine() {
@@ -199,6 +217,14 @@ constructor(private http: HttpClient) {}
       //   // existingMachine.MACHINE_DESC = 'hijacked';
       // }
 
+let n:number = 1
+
+console.log('n before: ',{n})
+
+console.log('machines (before):', this.machines)
+
+console.log('destructured: ', {...this.selectedDETMACH2fc, anotherProperty: 'xxx'})
+console.log('this.selectedDETMACH2fc',this.selectedDETMACH2fc)
 let m:DETMACH2 = {...this.selectedDETMACH2fc, 
   selected: false, 
   position: { x: 300, y: 300 },
@@ -207,8 +233,15 @@ let m:DETMACH2 = {...this.selectedDETMACH2fc,
 }
 
 console.log(m)
+console.log({m})
 
 this.machines.push(m)
+
+n+=1
+console.log('n after: ',{n})
+
+this.machines[0].MACHINE_ID = "m001"
+console.log('machines (after):', this.machines)
 
 // the next block of code is important to understand and to get to work
       // const existingMachine = this.mapByKey(this.machines, 'MACHINE_ID')[machineToAdd.MACHINE_ID];
@@ -278,25 +311,25 @@ this.machines.push(m)
   }
 
 
-// convertExcelToJson(excelFilePath: string, jsonFilePath: string) {
-//   // Read the Excel file
-//   const workbook = XLSX.readFile(excelFilePath);
+convertExcelToJson(excelFilePath: string, jsonFilePath: string) {
+  // Read the Excel file
+  const workbook = XLSX.readFile(excelFilePath);
 
-//   // Get the first sheet (you can specify a different sheet if necessary)
-//   const sheetName = workbook.SheetNames[0];
-//   const sheet = workbook.Sheets[sheetName];
+  // Get the first sheet (you can specify a different sheet if necessary)
+  const sheetName = workbook.SheetNames[0];
+  const sheet = workbook.Sheets[sheetName];
 
-//   // Convert the sheet to JSON
-//   const jsonData = XLSX.utils.sheet_to_json(sheet);
+  // Convert the sheet to JSON
+  const jsonData = XLSX.utils.sheet_to_json(sheet);
 
-//   // Write the JSON data to a file
-//   //fs.writeFileSync(jsonFilePath, JSON.stringify(jsonData, null, 2), 'utf-8');
+  // Write the JSON data to a file
+  //fs.writeFileSync(jsonFilePath, JSON.stringify(jsonData, null, 2), 'utf-8');
 
-// console.log({jsonData});
-// console.log(jsonData);
+console.log({jsonData});
+console.log(jsonData);
 
-//   //console.log(`Data has been converted to JSON and saved to ${jsonFilePath}`);
-// }
+  //console.log(`Data has been converted to JSON and saved to ${jsonFilePath}`);
+}
 
 
 

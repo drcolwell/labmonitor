@@ -1,12 +1,116 @@
+// .container {
+//   height:100%;
+//   display: grid;
+//   margin: 0 10px;
+//   // grid-template-columns: 50px 50px 50px 50px;
+//   grid-template-rows: 8% 85% 7%;
+//   grid-template-areas:
+//     "header"
+//     "main"
+//     "footer";
+// }
+
+// .mat-header-row {
+//   background-color: lightblue;
+// }
+// .mat-footer-row {
+//   background-color: lightgray;
+// }
+
+// .table-container {
+//   height: 100%;
+// }
+
+// .tab-button {
+//   width: 200px;
+//   margin-top: 5px;
+
+// }
+// .grid-header {
+//   grid-area: header;
+//   padding: 20px;
+
+//   display: grid;
+//   // grid-template-columns: 50px 50px 50px 50px;
+//   grid-template-columns: 98% 2%;
+
+// }
+
+// .grid-main {
+//   grid-area: main;
+//   height: 100%;
+// }
+// .grid-footer {
+//   grid-area: footer;
+// }
+
+// .card-width {
+//   width: 96%;
+// }
+
+// .key {
+//   padding: 10px;
+//   border-right: 2px solid green;
+//   // background-color: lightgray;
+// }
+
+// .data {
+//   // width: 100%;
+//   padding: 0 10px;
+//   border-right: 2px solid red;
+//   outline: 1px solid lightgray;
+//   display: flex;
+//   flex-direction: column;
+// }
+
+// .datacolumn {
+//   margin-right: 5px;
+// }
+
+// .example-card {
+//   height: 800px;
+//   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+//   display: grid;
+//   grid-template-rows: 90% 7% 3%;
+//   grid-template-areas:
+//     "card-content"
+//     "card-actions"
+//     "card-footer";
+// }
+
+// .action-bar-menu {
+//   margin-right: -10px;
+// }
+
+// .footer-controls {
+//   margin-right: 10px;
+// }
+
+.lab-monitor {
+display: flex;
+}
 .lab-map {
   background-color: #e1e1e1;
   background-image: url('https://absapi.absolution1.com/mystaticfiles/HAW.png');
+  // background-image: url('/assets/images/HAW.png');
   background-size: contain;
 background-repeat: no-repeat;
 position: relative;
-height:1000px;
-width: 600px;
+// height:1000px;
+// width: 600px;
+height:100%;
+width: 100%;
 flex-grow: 1;
+}
+.details-pane {
+background-color: #b0b0b0;
+overflow: hidden;
+width: 0;
+height: 100%;
+transition: all 0.5s ease;
+}
+.details-pane-shown {
+width: 22%;
 }
 
 .lab-machine-selected {
@@ -28,11 +132,29 @@ z-index: 10;
 border: 2px solid blue;
 }
 
-.lab-monitor {
-display: flex;
+.ring {
+position: absolute;
+top:0;
+bottom: 0;
+left:0;
+right:0;
+border-radius: 5px;
+-webkit-transform-origin: center;
+// animation-iteration-count: infinite;
+animation-iteration-count: 1;
 }
 
-
+.machine-image {
+display: flex;
+align-items: center;
+position: relative;
+justify-content: center;
+background-color: #fff;
+    width: 100px;
+height: 100px;
+border-radius: 5px;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
 .lab-machine-image {
 max-height:100px;
 max-width: 100px;
@@ -48,13 +170,11 @@ background-color: #f35555
   from {
       transform: scale(.75);
       opacity: 1;
+      // outline: solid red 2px;
   }
   to {
       transform: scale(1.5);
       opacity: 0;
+      // outline: none;
   }
 }
-
-
-
-

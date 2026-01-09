@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "dgj": "ng serve -o"
+    "dgj": "ng serve -o",
+    "wjz": "ng serve -o"
   },
   "prettier": {
     "printWidth": 100,

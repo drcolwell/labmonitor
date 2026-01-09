@@ -19,22 +19,22 @@
   </div>
   <label for="cars">Choose a {{ machine_dev }} machine:</label>
   <select id="cars" name="cars" (change)="onChange($event)">>
-    <option *ngFor="let selmachine of selmachines" 
-    
-    [value]="selmachine.MACHINE_ID">{{selmachine.MACHINE_DESC}}</option>
+    <option *ngFor="let selmachine of selmachines" [value]="selmachine.MACHINE_ID">{{selmachine.MACHINE_DESC}}</option>
   </select>
 
-  
-  <button mat-raised-button color="primary" (click)="addMachine()"
-  class="footer-controls">
-      Add Machine
+
+  <button mat-raised-button color="primary" (click)="addMachine()" class="footer-controls">
+    Add Machine
   </button>
 
-  <button mat-raised-button color="secondary" (click)="addAllMachines()"
-  class="footer-controls">
-      Add All Machines
+  <button mat-raised-button color="secondary" (click)="addAllMachines()" class="footer-controls">
+    Add All Machines
   </button>
 </div>
+
+<button mat-raised-button color="primary" (click)="pingMachine(0, $event)" class="footer-controls">
+  ping Machine 0
+</button>
 
 <div class="lab-monitor">
 
@@ -42,20 +42,36 @@
 
     <!-- [matTooltip]="machine.MACHINE_ID" -->
 
-    <div class="lab-machine" [ngClass]="{'selected': machine.selected}" 
-      *ngFor="let machine of machines"
-      [style.top.px]="machine.initialPosition.y" 
-      [style.left.px]="machine.initialPosition.x"     
-      cdkDragBoundary=".example-boundary" (cdkDragEnded)="dragEnd($event, machine)"
-      cdkDrag>
-
+    <div class="lab-machine" [ngClass]="{'selected': machine.selected}" *ngFor="let machine of machines"
+      [style.top.px]="machine.initialPosition.y" [style.left.px]="machine.initialPosition.x"
+      (click)="selectMachine(machine, $event)"
+      cdkDragBoundary=".example-boundary" (cdkDragEnded)="dragEnd($event, machine)" cdkDrag>
       <div class="ring"></div>
-      <div class="machine-image" (click)="selectMachine(machine, $event)">
+      <div class="machine-image" >
         <img class="lab-machine-image" [src]="machine.machineImageUrl">
       </div>
     </div>
 
+
   </div>
+
+  <div class="details-pane" style="display: flex; flex-direction: column; align-items: center;"
+    [ngClass]="{'details-pane-shown':showDetailsPane}">
+    Details Pane
+    <img *ngIf="selectedDETMACH2" class="lab-machine-image" style="align-self: center; margin-top: 10px;"
+      [src]="selectedDETMACH2.machineImageUrl">
+    <br />
+    {{selectedDETMACH2?.MACHINE_ID}}
+    <br />
+    {{selectedDETMACH2?.MACHINE_NAME}}
+    <hr />
+    <ul *ngIf="selectedDETMACH2 && selectedDETMACH2['DETJOBM4sList']">
+      <li *ngFor="let D of selectedDETMACH2['DETJOBM4sList']">
+        {{D.JOB_NO}} {{D.INIT_DATE}}
+      </li>
+    </ul>
+  </div>
+
 </div>
 
 <button (click)="btnClicked($event)">Create Load Excel into JSON</button>
