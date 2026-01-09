@@ -88,16 +88,18 @@
 
 .lab-monitor {
 display: flex;
+height:800px;
+width: 1000px;
+// height:100%;
+// width: 100%;
 }
 .lab-map {
   background-color: #e1e1e1;
-  background-image: url('https://absapi.absolution1.com/mystaticfiles/HAW.png');
-  // background-image: url('/assets/images/HAW.png');
+  // background-image: url('https://absapi.absolution1.com/mystaticfiles/HAW.png');
+  background-image: url('/assets/images/HAW.png');
   background-size: contain;
 background-repeat: no-repeat;
 position: relative;
-// height:1000px;
-// width: 600px;
 height:100%;
 width: 100%;
 flex-grow: 1;
