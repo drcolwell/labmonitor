@@ -9,6 +9,7 @@ import {CdkDrag} from '@angular/cdk/drag-drop';
 // import { DETMACH2 } from './app.model';
 
 import * as XLSX from 'xlsx';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 
 @Component({
@@ -42,8 +43,8 @@ export class App implements OnInit, AfterViewInit {
       selected: false,
       position: { x: 100, y: 100 },
       initialPosition: { x: 100, y: 100 },
-      machineImageUrl: 'https://absapi.absolution1.com/mystaticfiles/generator.jpg'
-
+      machineImageUrl: 'https://absapi.absolution1.com/mystaticfiles/generator.jpg',
+      DETJOBM4sList: []
     },
     {
       MACHINE_ID: 'M002',
@@ -54,7 +55,8 @@ export class App implements OnInit, AfterViewInit {
       selected: false,
       position: { x: 200, y: 200 },
       initialPosition: { x: 200, y: 200 },
-      machineImageUrl: 'https://absapi.absolution1.com/mystaticfiles/polisher.jpg'
+      machineImageUrl: 'https://absapi.absolution1.com/mystaticfiles/polisher.jpg',
+      DETJOBM4sList: []
 
     }
   ];
@@ -79,15 +81,61 @@ constructor(private http: HttpClient) {}
 
   async ngAfterViewInit() {
     // await this.readJsonFile();
-        console.log('before')
+    console.log('before')
     this.readJsonFile();
     console.log('after')
   }
+
+  
+  
+
+  iSTAT: number = -1
+  signalRService_DETJOBM4s$!: BehaviorSubject<DETJOBM4[]>
 
   ngOnInit() {
     // console.log('before')
     // this.readJsonFile();
     // console.log('after')
+
+    // this.signalRService_DETJOBM4s$! = new BehaviorSubject([])
+    
+    this.signalRService_DETJOBM4s$ = new BehaviorSubject<DETJOBM4[]>([])
+
+    setInterval(() => {
+      let start:number = this.iSTAT+1
+      this.iSTAT +=10
+      let finish:number = this.iSTAT
+      let Ds:DETJOBM4[] = []
+      for (let i = start; i < finish; i++) {
+        Ds.push(this.stats[i])
+      }
+      this.signalRService_DETJOBM4s$.next(Ds)
+      }, 10000)
+    
+    this.signalRService_DETJOBM4s$.subscribe(
+      (DETJOBM4s: DETJOBM4[]) => {
+        console.log(DETJOBM4s);
+
+        const keyed_machines = this.mapByKey(this.machines, 'MACHINE_ID');
+        let isec = -1;
+        let tsec = 0;
+        for (const DETJOBM4x of DETJOBM4s) {
+          const MACHINE_ID = DETJOBM4x.MACHINE_ID;
+          if (keyed_machines[MACHINE_ID]) {
+            const dt = new Date(DETJOBM4x['INIT_DATE']);
+
+            keyed_machines[MACHINE_ID]['DETJOBM4sList'] = keyed_machines[MACHINE_ID]['DETJOBM4sList'] || [];
+            keyed_machines[MACHINE_ID]['DETJOBM4sList'].push({...DETJOBM4x});
+
+            if (isec === -1) {isec = dt.getSeconds(); }
+            tsec = dt.getSeconds() - isec;
+            setTimeout(() => this.selectMachine(keyed_machines[MACHINE_ID], null), tsec * 1000);
+            console.log(DETJOBM4x.MACHINE_ID, tsec);
+          }
+        }
+      }
+    );
+
   }
   
   readJsonFile() {
@@ -197,6 +245,42 @@ constructor(private http: HttpClient) {}
   dragEnd(event: any, machine: any) {
     console.log('Drag ended for machine', machine, 'with event', event);
   }
+
+  // array2Dictionary(a:any[], p:any) {
+  //   const k = {};
+  //   for (const x of a) {
+  //     const key = x[p];
+  //     if (!k[key]) {
+  //         k[key] = [];
+  //       }
+  //     k[key].push(x);
+  //   }
+
+  //   return k;
+  // }
+
+  mapByKey<T extends Item>(array: T[], key: keyof T): Item<T> {
+    return array.reduce((map, item) => ({...map, [item[key]]: item}), {});
+  }
+
+  groupByKey<T extends Item>(array: T[], key: keyof T): ItemGroup<T> {
+    return array.reduce<ItemGroup<T>>((map, item) => {
+      const itemKey = item[key];
+      if (map[itemKey]) {
+        map[itemKey].push(item);
+      } else {
+        map[itemKey] = [item];
+      }
+      return map;
+    }, {});
+  }
+ 
+
+
+
+
+
+
 
   
   addMachine() {
@@ -336,6 +420,15 @@ console.log(jsonData);
 }
 
 
+
+export interface Item<T = any> {
+  [key: string]: T;
+}
+
+export interface ItemGroup<T> {
+  [key: string]: T[];
+}
+
 // export class State {
 //     DETMACH0s: DETMACH0[] = [];
 //     DETMACH2s: DETMACH2[] = [];
@@ -355,6 +448,7 @@ export class DETMACH2 {
   // machineTags: Array<string>;
   // machineStatus: string;
   // currentJobNo: string;
+  DETJOBM4sList: DETJOBM4[] = [];
 }
 
 export class DETMACH0 {
