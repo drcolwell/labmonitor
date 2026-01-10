@@ -95,6 +95,8 @@ console.log('formatted date', today, this.formatDate(today));
 
   iSTAT: number = -1
   signalRService_DETJOBM4s$!: BehaviorSubject<DETJOBM4[]>
+  inProcess: boolean = false;
+  iLoop: number = 0;
 
   formatDate(dateIn: Date) {
   let yyyy:number = dateIn.getFullYear();
@@ -132,41 +134,64 @@ formatNumPad(n:number, padLen:number, padChar: string): string {
     this.signalRService_DETJOBM4s$ = new BehaviorSubject<DETJOBM4[]>([])
 
     setInterval(() => {
-
-      // this block gets the next 10 array elements from this.stats
-      // let start:number = this.iSTAT+1
-      // this.iSTAT +=10
-      // let finish:number = this.iSTAT
-      // let Ds:DETJOBM4[] = []
-      // for (let i = start; i < finish; i++) {
-      //   Ds.push(this.stats[i])
-      // }
-
-      // this block gets the array elements from this.stats
-      // from the last index used +1, to the array element whose INIT_DATE <= now
-      let start:number = this.iSTAT+1;
-      let Ds:DETJOBM4[] = [];
-      let finish: string = this.formatDate(new Date())
       
-      // 20260109135952
+      // if this.inProcess = true then exit this routine
 
-      for (let i = start; i < start + 10000; i++) {
-        let d:Date = new Date(this.stats[i].INIT_DATE)
-        // console.log({d}, this.stats[i].INIT_DATE)
-        if (this.formatDate(d).substring(8) > finish.substring(8)) {break;}
+      // if (this.inProcess === false) {
+      // if (!this.inProcess) {
+      if (this.inProcess) {
+        // do nothing
+      } else {
 
-        this.iSTAT++
+        this.inProcess = true;
+        this.iLoop++
 
-        if (this.formatDate(d).substring(8) > '140000') {
-          console.log(this.formatDate(d).substring(8))
-          Ds.push(this.stats[i])
-          console.log({Ds})
-          this.signalRService_DETJOBM4s$.next(Ds)
-        } else {
-          console.log(this.formatDate(d).substring(8))
+        // this block gets the next 10 array elements from this.stats
+        // let start:number = this.iSTAT+1
+        // this.iSTAT +=10
+        // let finish:number = this.iSTAT
+        // let Ds:DETJOBM4[] = []
+        // for (let i = start; i < finish; i++) {
+        //   Ds.push(this.stats[i])
+        // }
+
+        // this block gets the array elements from this.stats
+        // from the last index used +1, to the array element whose INIT_DATE <= now
+        let start:number = this.iSTAT+1;
+        let Ds:DETJOBM4[] = [];
+        let finish: string = this.formatDate(new Date())
+        
+        // yyyyMMddHHmmss
+        // 20260109135952
+        // 01234567890123
+        // https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_substring2
+
+        let dx: string = "nothing found"
+        let n:number = 0
+
+        for (let i = start; i < start + 10000; i++) {
+          let d:Date = new Date(this.stats[i].INIT_DATE)
+          dx = this.formatDate(d).substring(8)
+
+          // console.log({d}, this.stats[i].INIT_DATE)
+          if (dx > finish.substring(8)) {break;}
+
+          this.iSTAT++
+          n++
+
+          if (dx > '090000') {
+            console.log(dx)
+            Ds.push(this.stats[i])
+            console.log({Ds})
+            this.signalRService_DETJOBM4s$.next(Ds)
+          } else {
+            // log something so that we know we are running
+            // console.log(dx, this.iSTAT, this.iLoop)
+          }
         }
+        console.log({finish, HHMMSS:dx, iSTAT: this.iSTAT, iLoop: this.iLoop, records:n})
+        this.inProcess = false;
       }
-
 
       }, 2000)
     
