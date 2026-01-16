@@ -312,6 +312,10 @@ formatNumPad(n:number, padLen:number, padChar: string): string {
     this.selectMachine(this.machines[mIndex], event)
   }
 
+  removeSelected() {
+    this.machines.forEach(x => { x.selected = false; });
+  }
+
   selectMachine(selectedMachine: DETMACH2, event:any) {
 
     if (event) {
@@ -320,8 +324,8 @@ formatNumPad(n:number, padLen:number, padChar: string): string {
 
     console.log('this is the newly selected machine ->', selectedMachine);
     this.machines.forEach(x => { x.selected = false; });
-    // selectedMachine.selected = true;
-    setTimeout(() => selectedMachine.selected = true, 0); // nec because we are using anglar to create the ping
+    selectedMachine.selected = true;
+    // setTimeout(() => selectedMachine.selected = true, 0); // nec because we are using anglar to create the ping
     this.selectedDETMACH2 = selectedMachine;
     this.showDetailsPane = true;
   }

@@ -115,13 +115,6 @@ transition: all 0.5s ease;
 width: 22%;
 }
 
-.lab-machine-selected {
-margin: 5px;
-z-index:5;
-width: 50px;
-height: 50px;
-}
-
 .lab-machine {
 position: absolute;
 margin: 5px;
@@ -129,10 +122,21 @@ z-index:5;
   width: 100px;
 height: 100px;
 }
+
+.lab-machine-selected {
+margin: 5px;
+z-index:5;
+width: 50px;
+height: 50px;
+border: 2px solid green;
+}
+
 .lab-machine.selected {
 z-index: 10;
 border: 2px solid blue;
 }
+
+
 
 .ring {
 position: absolute;
@@ -141,7 +145,7 @@ bottom: 0;
 left:0;
 right:0;
 border-radius: 5px;
--webkit-transform-origin: center;
+transform-origin: center;
 // animation-iteration-count: infinite;
 animation-iteration-count: 1;
 }
@@ -164,11 +168,11 @@ max-width: 100px;
 
 .lab-machine.selected .ring {
 border: solid red 2px;
--webkit-animation-duration: 3s;
--webkit-animation-name: active-ping;
+animation-duration: 3s;
+animation-name: active-ping;
 background-color: #f35555
 }
-@-webkit-keyframes active-ping {
+@keyframes active-ping {
   from {
       transform: scale(.75);
       opacity: 1;
