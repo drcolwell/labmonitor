@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, signal, OnInit, AfterViewInit } from '@angular/core';
+import { Component, signal, OnInit, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { filter, map } from 'rxjs/operators';
@@ -16,12 +16,14 @@ import { BehaviorSubject, Observable } from 'rxjs';
   selector: 'app-root',
   imports: [RouterOutlet, CommonModule, CdkDrag],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class App implements OnInit, AfterViewInit {
 
   protected readonly title = signal('Lab Monitor');
-
+  private cd = inject(ChangeDetectorRef);
+  
   selmachines: DETMACH2[] = [];
   machine_dev: string = '';
   selectedDETMACH2fc!: DETMACH2;
@@ -32,34 +34,36 @@ export class App implements OnInit, AfterViewInit {
   DEFLMON1: any;
   DETMACH2s_DEV: DETMACH2[] = [];
   allmachines: DETMACH2[] = []
-
+  
   machines: DETMACH2[] = [
-    {
-      MACHINE_ID: 'M001',
-      MACHINE_DESC: 'Lathe Machine',
-      DEPT_CODE: 'D01',
-      MACHINE_DEV: 'GEN',
-      MACHINE_TYPE: 'Lathe',
-      selected: false,
-      position: { x: 100, y: 100 },
-      initialPosition: { x: 100, y: 100 },
-      machineImageUrl: 'https://absapi.absolution1.com/mystaticfiles/generator.jpg',
-      DETJOBM4sList: []
-    },
-    {
-      MACHINE_ID: 'M002',
-      MACHINE_DESC: 'Lathe Machine',
-      DEPT_CODE: 'D01',
-      MACHINE_DEV: 'POL',
-      MACHINE_TYPE: 'Lathe',
-      selected: false,
-      position: { x: 200, y: 200 },
-      initialPosition: { x: 200, y: 200 },
-      machineImageUrl: 'https://absapi.absolution1.com/mystaticfiles/polisher.jpg',
-      DETJOBM4sList: []
+    // {
+    //   MACHINE_ID: 'M001',
+    //   MACHINE_DESC: 'Lathe Machine',
+    //   DEPT_CODE: 'D01',
+    //   MACHINE_DEV: 'GEN',
+    //   MACHINE_TYPE: 'Lathe',
+    //   selected: false,
+    //   position: { x: 100, y: 100 },
+    //   initialPosition: { x: 100, y: 100 },
+    //   machineImageUrl: 'https://absapi.absolution1.com/mystaticfiles/generator.jpg',
+    //   DETJOBM4sList: []
+    // },
+    // {
+    //   MACHINE_ID: 'M002',
+    //   MACHINE_DESC: 'Lathe Machine',
+    //   DEPT_CODE: 'D01',
+    //   MACHINE_DEV: 'POL',
+    //   MACHINE_TYPE: 'Lathe',
+    //   selected: false,
+    //   position: { x: 200, y: 200 },
+    //   initialPosition: { x: 200, y: 200 },
+    //   machineImageUrl: 'https://absapi.absolution1.com/mystaticfiles/polisher.jpg',
+    //   DETJOBM4sList: []
 
-    }
+    // }
   ];
+
+  
 
   DETMACH0_DEV: DETMACH0[] = [];
   devices: DETMACH0[] = []
@@ -77,7 +81,7 @@ export class App implements OnInit, AfterViewInit {
   ];
   selectedDETMACH2: any;
 
-constructor(private http: HttpClient) {
+constructor(private http: HttpClient, cdr: ChangeDetectorRef) {
  
 let today = new Date();
 console.log('formatted date', today, this.formatDate(today));
@@ -204,6 +208,7 @@ formatNumPad(n:number, padLen:number, padChar: string): string {
         let isec = -1;
         let tsec = 0;
         for (const DETJOBM4x of DETJOBM4s) {
+          // const MACHINE_ID = "EDG019" // DETJOBM4x.MACHINE_ID;
           const MACHINE_ID = DETJOBM4x.MACHINE_ID;
           if (keyed_machines[MACHINE_ID]) {
             const dt = new Date(DETJOBM4x['INIT_DATE']);
@@ -211,9 +216,23 @@ formatNumPad(n:number, padLen:number, padChar: string): string {
             keyed_machines[MACHINE_ID]['DETJOBM4sList'] = keyed_machines[MACHINE_ID]['DETJOBM4sList'] || [];
             keyed_machines[MACHINE_ID]['DETJOBM4sList'].push({...DETJOBM4x});
 
+            if (MACHINE_ID === "EDG019") {
+              console.error({MACHINE_ID})
+            }
+
             if (isec === -1) {isec = dt.getSeconds(); }
             tsec = dt.getSeconds() - isec;
-            setTimeout(() => this.selectMachine(keyed_machines[MACHINE_ID], null), tsec * 1000);
+            // setTimeout(() => this.selectMachine(keyed_machines[MACHINE_ID], null), tsec * 1000);
+            
+            if (keyed_machines[MACHINE_ID].selected) {
+              keyed_machines[MACHINE_ID].selected = false
+            }
+            
+            // this.cd.markForCheck(); 
+            this.cd.detectChanges();
+
+            this.selectMachine(keyed_machines[MACHINE_ID], null)
+
             console.log(DETJOBM4x.MACHINE_ID, tsec);
           }
         }
@@ -235,6 +254,8 @@ formatNumPad(n:number, padLen:number, padChar: string): string {
         console.log(this.stats); 
       });
      
+                  this.cd.detectChanges();
+
     console.log('2 started DETMACH2_HAW')
     this.http.get<DETMACH2[]>('assets/data/DETMACH2_HAW.json')
       .pipe(
@@ -248,7 +269,15 @@ formatNumPad(n:number, padLen:number, padChar: string): string {
         console.log('2 completed DETMACH2_HAW')        
         this.allmachines = result;
         console.log(this.allmachines); 
+
+        // this.allmachines.forEach(x => {
+        //   if (x.MACHINE_ID === "EDG023" || x.MACHINE_ID === "GEN010") {
+        //          this.machines.push (x);
+        //   }
+        // });
       });
+
+                  this.cd.detectChanges();
 
     console.log('3 started DETMACH0')
     this.http.get<DETMACH0[]>('assets/data/DETMACH0.json')
@@ -270,7 +299,7 @@ formatNumPad(n:number, padLen:number, padChar: string): string {
           || device.MACHINE_DEV === 'TRC' );
         console.log(this.devices); 
       });
-
+            this.cd.detectChanges();
   }
 
   onChange(event: Event): void {
@@ -323,11 +352,17 @@ formatNumPad(n:number, padLen:number, padChar: string): string {
     }
 
     console.log('this is the newly selected machine ->', selectedMachine);
-    this.machines.forEach(x => { x.selected = false; });
-    selectedMachine.selected = true;
-    // setTimeout(() => selectedMachine.selected = true, 0); // nec because we are using anglar to create the ping
-    this.selectedDETMACH2 = selectedMachine;
-    this.showDetailsPane = true;
+    // this.machines.forEach(x => { x.selected = false; });
+
+    if (selectedMachine.selected) {
+      // selectedMachine.selected = false;
+           this.machines.forEach(x => { x.selected = false; });
+    } else {
+      selectedMachine.selected = true;
+      // setTimeout(() => selectedMachine.selected = true, 0); // nec because we are using anglar to create the ping
+      this.selectedDETMACH2 = selectedMachine;
+      this.showDetailsPane = true;
+    }
   }
 
   dragEnd(event: any, machine: any) {
