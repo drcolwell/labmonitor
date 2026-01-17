@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, signal, OnInit, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, inject } from '@angular/core';
+import { Component, signal, OnInit, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, inject, computed, WritableSignal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, httpResource } from '@angular/common/http';
 import { filter, map } from 'rxjs/operators';
 import {CdkDrag} from '@angular/cdk/drag-drop';
 
@@ -22,14 +22,15 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class App implements OnInit, AfterViewInit {
 
   protected readonly title = signal('Lab Monitor');
-  private cd = inject(ChangeDetectorRef);
+  // private cd = inject(ChangeDetectorRef);
   
   selmachines: DETMACH2[] = [];
   machine_dev: string = '';
   selectedDETMACH2fc!: DETMACH2;
   showDetailsPane = false;
+  selectedDev: string = '';
 
-  Devs:string[] = ['EDG', 'GEN', 'POL','TRC'];
+  // Devs:string[] = ['EDG', 'GEN', 'POL','TRC'];
 
   DEFLMON1: any;
   DETMACH2s_DEV: DETMACH2[] = [];
@@ -68,6 +69,20 @@ export class App implements OnInit, AfterViewInit {
   DETMACH0_DEV: DETMACH0[] = [];
   devices: DETMACH0[] = []
 
+  devicesResource = httpResource<DETMACH0[]>(() => 'assets/data/DETMACH0.json', { defaultValue: [] });
+  devicesSignal = this.devicesResource.value;
+
+    // filteredDevices: Signal<DETMACH0[]> = computed(() => {
+  filteredDevices = computed(() => {
+    // Use the standard JavaScript array filter method
+    return this.devicesSignal().filter(device =>
+             device.MACHINE_DEV === 'GEN' 
+          || device.MACHINE_DEV === 'EDG' 
+          || device.MACHINE_DEV === 'POL' 
+          || device.MACHINE_DEV === 'TRC'
+    );
+  });
+
   stats: DETJOBM4[] = [
     {
       JOB_NO: 'J001',
@@ -81,7 +96,7 @@ export class App implements OnInit, AfterViewInit {
   ];
   selectedDETMACH2: any;
 
-constructor(private http: HttpClient, cdr: ChangeDetectorRef) {
+constructor(private http: HttpClient) { //, cdr: ChangeDetectorRef) {
  
 let today = new Date();
 console.log('formatted date', today, this.formatDate(today));
@@ -183,7 +198,7 @@ formatNumPad(n:number, padLen:number, padChar: string): string {
           this.iSTAT++
           n++
 
-          if (dx > '090000') {
+          if (dx > '080000') {
             console.log(dx)
             Ds.push(this.stats[i])
             console.log({Ds})
@@ -215,7 +230,8 @@ formatNumPad(n:number, padLen:number, padChar: string): string {
 
             keyed_machines[MACHINE_ID]['DETJOBM4sList'] = keyed_machines[MACHINE_ID]['DETJOBM4sList'] || [];
             keyed_machines[MACHINE_ID]['DETJOBM4sList'].push({...DETJOBM4x});
-
+// keyed_machines[MACHINE_ID]['DETJOBM4sList'] = [...keyed_machines[MACHINE_ID]['DETJOBM4sList'], DETJOBM4x]
+// keyed_machines[MACHINE_ID] = {...keyed_machines[MACHINE_ID]}
             if (MACHINE_ID === "EDG019") {
               console.error({MACHINE_ID})
             }
@@ -224,15 +240,14 @@ formatNumPad(n:number, padLen:number, padChar: string): string {
             tsec = dt.getSeconds() - isec;
             // setTimeout(() => this.selectMachine(keyed_machines[MACHINE_ID], null), tsec * 1000);
             
-            if (keyed_machines[MACHINE_ID].selected) {
-              keyed_machines[MACHINE_ID].selected = false
+            if (keyed_machines[MACHINE_ID].selected()) {
+              // keyed_machines[MACHINE_ID].selected = false
+              keyed_machines[MACHINE_ID].selected.set(false)
+              // // this.cd.markForCheck(); 
+              // this.cd.detectChanges();
             }
             
-            // this.cd.markForCheck(); 
-            this.cd.detectChanges();
-
             this.selectMachine(keyed_machines[MACHINE_ID], null)
-
             console.log(DETJOBM4x.MACHINE_ID, tsec);
           }
         }
@@ -254,7 +269,7 @@ formatNumPad(n:number, padLen:number, padChar: string): string {
         console.log(this.stats); 
       });
      
-                  this.cd.detectChanges();
+                  // this.cd.detectChanges();
 
     console.log('2 started DETMACH2_HAW')
     this.http.get<DETMACH2[]>('assets/data/DETMACH2_HAW.json')
@@ -277,7 +292,7 @@ formatNumPad(n:number, padLen:number, padChar: string): string {
         // });
       });
 
-                  this.cd.detectChanges();
+                  // this.cd.detectChanges();
 
     console.log('3 started DETMACH0')
     this.http.get<DETMACH0[]>('assets/data/DETMACH0.json')
@@ -299,7 +314,7 @@ formatNumPad(n:number, padLen:number, padChar: string): string {
           || device.MACHINE_DEV === 'TRC' );
         console.log(this.devices); 
       });
-            this.cd.detectChanges();
+            // this.cd.detectChanges();
   }
 
   onChange(event: Event): void {
@@ -331,7 +346,7 @@ formatNumPad(n:number, padLen:number, padChar: string): string {
 
   mapClicked(event: MouseEvent) {
     console.log('Map clicked', event);
-    this.machines.forEach(x => {x.selected = false; });
+    this.machines.forEach(x => {x.selected.set(false); });
     this.showDetailsPane = false;
   }
   
@@ -342,7 +357,7 @@ formatNumPad(n:number, padLen:number, padChar: string): string {
   }
 
   removeSelected() {
-    this.machines.forEach(x => { x.selected = false; });
+    this.machines.forEach(x => { x.selected.set(false); });
   }
 
   selectMachine(selectedMachine: DETMACH2, event:any) {
@@ -354,15 +369,24 @@ formatNumPad(n:number, padLen:number, padChar: string): string {
     console.log('this is the newly selected machine ->', selectedMachine);
     // this.machines.forEach(x => { x.selected = false; });
 
-    if (selectedMachine.selected) {
+    if (selectedMachine.selected()) {
       // selectedMachine.selected = false;
-           this.machines.forEach(x => { x.selected = false; });
+           this.machines.forEach(x => { x.selected.set(false); });
     } else {
-      selectedMachine.selected = true;
+      // selectedMachine.selected = true;
+      // // setTimeout(() => selectedMachine.selected = true, 0); // nec because we are using anglar to create the ping
+      // this.selectedDETMACH2 = selectedMachine;
+      // this.showDetailsPane = true;
+      // this.cd.detectChanges
+    }
+
+      selectedMachine.selected.set(true);
       // setTimeout(() => selectedMachine.selected = true, 0); // nec because we are using anglar to create the ping
       this.selectedDETMACH2 = selectedMachine;
       this.showDetailsPane = true;
-    }
+
+      setTimeout(() => {selectedMachine.selected.set(false)}, 3000)
+      // this.cd.detectChanges
   }
 
   dragEnd(event: any, machine: any) {
@@ -433,7 +457,9 @@ console.log('machines (before):', this.machines)
 console.log('destructured: ', {...this.selectedDETMACH2fc, anotherProperty: 'xxx'})
 console.log('this.selectedDETMACH2fc',this.selectedDETMACH2fc)
 let m:DETMACH2 = {...this.selectedDETMACH2fc, 
-  selected: false, 
+  // selected: false, 
+  // selected: WritableSignal<boolean> = signal(false),
+  selected: signal(false),
   position: { x: 300, y: 300 },
   initialPosition: { x: 300, y: 300 },
   machineImageUrl: 'https://absapi.absolution1.com/mystaticfiles/MACHINE_DEV/' + this.selectedDETMACH2fc.MACHINE_DEV + '.jpg'
@@ -564,7 +590,8 @@ export class DETMACH2 {
   DEPT_CODE!: string;
   MACHINE_DEV!: string;
   MACHINE_TYPE!: string;
-  selected!: boolean;
+  // selected!: boolean;
+  selected: WritableSignal<boolean> = signal(false)
   position: any;
   initialPosition: any;
   machineImageUrl!: string;
