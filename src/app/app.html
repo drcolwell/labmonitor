@@ -100,3 +100,15 @@
 
 
 <router-outlet />
+            <!-- 👇👇 Add the toolbar component 👇👇 -->
+            <ndt-toolbar>
+
+                <!--  Add any custom toolbar tool you created -->
+                <ndt-toolbar-tool
+                  [options]="windowConfig"
+                  [icon]="'gear'"
+                  [title]="'Settings'" >
+                      <p>This is a custom tool</p>
+                </ndt-toolbar-tool>
+
+            </ndt-toolbar>

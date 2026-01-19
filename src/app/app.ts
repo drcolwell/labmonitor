@@ -4,7 +4,7 @@ import { RouterOutlet } from '@angular/router';
 import { HttpClient, httpResource } from '@angular/common/http';
 import { filter, map } from 'rxjs/operators';
 import {CdkDrag} from '@angular/cdk/drag-drop';
-
+import { DevToolbarComponent, DevToolbarFeatureFlagService, DevToolbarToolComponent } from 'ngx-dev-toolbar';
 
 // import { DETMACH2 } from './app.model';
 
@@ -14,7 +14,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, CdkDrag],
+  imports: [RouterOutlet, CommonModule, CdkDrag, DevToolbarComponent, DevToolbarToolComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -30,6 +30,7 @@ export class App implements OnInit, AfterViewInit {
   showDetailsPane = false;
   selectedDev: string = '';
 
+  windowConfig = {id: "id-1", title: "title-2", description: "this is the description"}
   // Devs:string[] = ['EDG', 'GEN', 'POL','TRC'];
 
   DEFLMON1: any;
@@ -95,9 +96,28 @@ export class App implements OnInit, AfterViewInit {
 
   ];
   selectedDETMACH2: any;
+  
+  private featureFlagsService = inject(DevToolbarFeatureFlagService);
 
 constructor(private http: HttpClient) { //, cdr: ChangeDetectorRef) {
  
+   // Set available feature flags
+    this.featureFlagsService.setAvailableOptions([
+      { id: 'darkMode', name: 'Dark Mode', isEnabled: true, isForced: true },
+      { id: 'betaFeatures', name: 'Beta Features', isEnabled: true, isForced: true },
+      { id: 'experimentalUI', name: 'Experimental UI', isEnabled: true, isForced: true },
+    ]);
+
+        // Get all flags with overrides applied
+    this.featureFlagsService.getValues().pipe(
+      map(flags => flags.find(f => f.id === 'darkMode')),
+      map(flag => flag?.isEnabled ?? false)
+    ).subscribe(isDarkMode => {
+      if (isDarkMode) {
+        // Apply dark mode logic
+      }
+    });
+
 let today = new Date();
 console.log('formatted date', today, this.formatDate(today));
 

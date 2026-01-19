@@ -9,7 +9,7 @@
     "test": "ng test",
     "dgj": "ng serve -o",
     "wjz": "ng serve -o",
-     "drc": "ng serve -o"
+    "drc": "ng serve -o"
   },
   "prettier": {
     "printWidth": 100,
@@ -43,6 +43,7 @@
     "@angular/cli": "^21.0.4",
     "@angular/compiler-cli": "^21.0.0",
     "jsdom": "^27.1.0",
+    "ngx-dev-toolbar": "^2.1.1",
     "typescript": "~5.9.2",
     "vitest": "^4.0.8"
   }
